@@ -1,0 +1,17 @@
+{
+    "name": "Prota.Unity",
+    "rootNamespace": "Prota.Unity",
+    "references": [
+        "Prota.Utils",
+        "Unity.Mathematics"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
