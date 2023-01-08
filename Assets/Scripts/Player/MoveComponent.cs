@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 using Prota.Animation;
@@ -9,6 +10,8 @@ public class MoveComponent : MonoBehaviour
 {
     [SerializeField]
     private Rigidbody Rigidbody;
+
+    private Player Player;
 
     public float Speed = 1f;
 
@@ -24,12 +27,16 @@ public class MoveComponent : MonoBehaviour
     public SimpleAnimationAsset idleRight;
     public SimpleAnimationAsset idleDown;
     public SimpleAnimationAsset idleUp;
-
     
     private void Start()
     {
         if (Rigidbody == null) Rigidbody = GetComponent<Rigidbody>();
         anim = this.GetComponentInChildren<SimpleAnimation>();
+    }
+
+    public void Init(Player player)
+    {
+        Player = player;
     }
 
     // Update is called once per frame
@@ -40,6 +47,21 @@ public class MoveComponent : MonoBehaviour
         ProcessAnimation(x, y);
         if (!IfCanMove) return;
         ProcessMove(x, y);
+        if(x != 0 || y != 0)
+        {
+            OnMoveEvent?.Invoke(this);
+            if(Player.PlayerState == PlayerState.Idle || Player.PlayerState == PlayerState.GiveEnergy)
+            {
+                Player.PlayerState = PlayerState.Move;
+            }
+        }
+        else
+        {
+             if(Player.PlayerState != PlayerState.GiveEnergy)
+            {
+                Player.PlayerState = PlayerState.Idle;
+            }
+        }
     }
     
     void ProcessMove(float x, float y)
@@ -89,5 +111,7 @@ public class MoveComponent : MonoBehaviour
         anim.mirror = mirror;
         anim.Play(asset);
     }
+
+    public event Action<MoveComponent> OnMoveEvent;
     
 }

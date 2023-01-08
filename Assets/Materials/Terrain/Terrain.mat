@@ -62,7 +62,7 @@ Material:
     - _BUILTIN_QueueOffset: 0
     - _BumpScale: 1
     - _Cutoff: 0.5
-    - _DarkEffect: 1
+    - _DarkEffect: 0
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _Freq: 1

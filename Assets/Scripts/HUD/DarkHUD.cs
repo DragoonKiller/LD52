@@ -15,6 +15,7 @@ public class DarkHUD : MonoBehaviour
     {
         MaxRect = new Rect(ValueTransform.rect.position, ValueTransform.rect.size);
         OffsetMax = ValueTransform.offsetMax;
+        World.Instance.OnDarkEnergyChange += ChangeValueView;
     }
 
     public void ChangeValueView(float value, float max)
