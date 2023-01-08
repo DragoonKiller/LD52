@@ -5,13 +5,21 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private MoveComponent MoveComponent;
+    [SerializeField] public MoveComponent MoveComponent;
     [SerializeField] private ShootMovement ShootMovement;
+    [SerializeField] private GiveEnergy GiveEnergy;
+
+    public PlayerState PlayerState = PlayerState.Idle;
 
 
     private void Awake()
     {
+        MoveComponent.Init(this);
         ShootMovement.Init(this);
+        GiveEnergy.Init(this);
+        Energy = Energy_Max;
+        HealPoint = HealPoint_Max;
+
     }
 
     private void Init()
@@ -27,6 +35,7 @@ public class Player : MonoBehaviour
         set
         {
             _Energy = value;
+            OnEnergyChangeEvent?.Invoke(Energy, Energy_Max);
         }
         get
         {
@@ -44,7 +53,8 @@ public class Player : MonoBehaviour
         set
         {
             _HealPoint = value;
-            if(_HealPoint <=0)
+            OnHealPointChangeEvent?.Invoke(HealPoint, HealPoint_Max);
+            if (_HealPoint <= 0)
             {
                 _HealPoint = 0;
                 Death();
@@ -61,11 +71,11 @@ public class Player : MonoBehaviour
     public void OnBeHit(int type, float value)
     {
         HealPoint -= value;
-        switch(type)
+        switch (type)
         {
             case 0:
-            // 受伤特效
-            break;
+                // 受伤特效
+                break;
         }
     }
 
@@ -88,6 +98,20 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void ShowInteractionButton(AcceptEnergy target)
+    {
+        GiveEnergy.Target = target;
+        GiveEnergy.SetActive(true);
+    }
+    public void HideInteractionButton(AcceptEnergy target)
+    {
+        if (GiveEnergy.Target == target)
+        {
+            GiveEnergy.Target = null;
+            GiveEnergy.SetActive(false);
+        }
+    }
+
 }
 
 public enum PlayerState
@@ -95,5 +119,6 @@ public enum PlayerState
     Node = 0,
     Idle = 1 << 0,
     Move = 1 << 1,
-    Shoot = 1 << 2
+    Shoot = 1 << 2,
+    GiveEnergy = 1 << 3
 }

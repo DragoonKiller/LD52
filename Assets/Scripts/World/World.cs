@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class World : MonoBehaviour
@@ -24,11 +25,14 @@ public class World : MonoBehaviour
         Player.OnBeHit(0, DardDamage * Time.deltaTime);
     }
 
+    [SerializeField]
+    private float SunEnergy_Max;
     public float SunEnergy
     {
         set
         {
             _SunEnergy = value;
+            OnSunEnergyChange?.Invoke(SunEnergy, SunEnergy_Max);
         }
         get
         {
@@ -36,6 +40,8 @@ public class World : MonoBehaviour
         }
     }
     private float _SunEnergy;
+
+    public event Action<float, float> OnSunEnergyChange;
 
     public int SunLevel
     {
@@ -47,17 +53,22 @@ public class World : MonoBehaviour
     [SerializeField]
     private float EnergyPreSunLevel = 200f;
 
+    [SerializeField]
+    private float DarkEnergy_Max;
     public float DarkEnergy
     {
         set
         {
             _DarkEnergy = value;
+            OnDarkEnergyChange?.Invoke(DarkEnergy, DarkEnergy_Max);
         }
         get
         {
             return _DarkEnergy;
         }
     }
+
+    public event Action<float, float> OnDarkEnergyChange;
     public int DarkLevel
     {
         get
@@ -66,6 +77,7 @@ public class World : MonoBehaviour
         }
     }
     private float _DarkEnergy;
+
     [SerializeField]
     private float EnergyPreDarkLevel = 200f;
 
