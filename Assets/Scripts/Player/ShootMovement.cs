@@ -38,8 +38,13 @@ public class ShootMovement : MonoBehaviour
     [SerializeField]
     private float shootForce = 50f;
 
-    int groundLayerMask = LayerMask.GetMask("Ground");
-
+    int groundLayerMask;
+    
+    void Start()
+    {
+        groundLayerMask = LayerMask.GetMask("Ground");
+    }
+    
     void Update()
     {
         if (!IfCanShoot)
