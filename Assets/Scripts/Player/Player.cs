@@ -5,10 +5,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField]
-    private MoveComponent MoveComponent;
-    [SerializeField]
-    private ShootMovement ShootMovement;
+    [SerializeField] private MoveComponent MoveComponent;
+    [SerializeField] private ShootMovement ShootMovement;
+
 
     private void Awake()
     {

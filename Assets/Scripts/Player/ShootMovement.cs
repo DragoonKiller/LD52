@@ -38,6 +38,8 @@ public class ShootMovement : MonoBehaviour
     [SerializeField]
     private float shootForce = 50f;
 
+    int groundLayerMask = LayerMask.GetMask("Ground");
+
     void Update()
     {
         if (!IfCanShoot)
@@ -45,9 +47,8 @@ public class ShootMovement : MonoBehaviour
 
         var mousePosition = Camera.ScreenToWorldPoint(Input.mousePosition);
         Ray ray = Camera.ScreenPointToRay(Input.mousePosition);
-        int layerMask = 1 << 6;
 
-        if (Physics.Raycast(ray, out RaycastHit hit, 100f, layerMask))
+        if (Physics.Raycast(ray, out RaycastHit hit, 100f, groundLayerMask))
         {
             var hitPoint = hit.point;
             var shootDir = new Vector3(hitPoint.x - LauchPosition.position.x, 0, hitPoint.z - LauchPosition.position.z).normalized;
