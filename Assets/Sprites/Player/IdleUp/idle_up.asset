@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c0d3194b57ad184cbb0189e4762e4b8, type: 3}
+  m_Name: idle_up
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: eaef501a280b41241a835dfb5ba4e119, type: 3}
+  - {fileID: 21300000, guid: 518e5fc5473fdf94586c272591c7e129, type: 3}
+  - {fileID: 21300000, guid: ea391eb221f3ae44cbcc73eba7154f04, type: 3}
+  - {fileID: 21300000, guid: 6b22b4b1286f96b499e96016af0b0378, type: 3}
+  frames:
+  - {fileID: 21300000, guid: eaef501a280b41241a835dfb5ba4e119, type: 3}
+  - {fileID: 21300000, guid: eaef501a280b41241a835dfb5ba4e119, type: 3}
+  - {fileID: 21300000, guid: eaef501a280b41241a835dfb5ba4e119, type: 3}
+  - {fileID: 21300000, guid: eaef501a280b41241a835dfb5ba4e119, type: 3}
+  - {fileID: 21300000, guid: eaef501a280b41241a835dfb5ba4e119, type: 3}
+  - {fileID: 21300000, guid: eaef501a280b41241a835dfb5ba4e119, type: 3}
+  - {fileID: 21300000, guid: 518e5fc5473fdf94586c272591c7e129, type: 3}
+  - {fileID: 21300000, guid: 518e5fc5473fdf94586c272591c7e129, type: 3}
+  - {fileID: 21300000, guid: 518e5fc5473fdf94586c272591c7e129, type: 3}
+  - {fileID: 21300000, guid: 518e5fc5473fdf94586c272591c7e129, type: 3}
+  - {fileID: 21300000, guid: 518e5fc5473fdf94586c272591c7e129, type: 3}
+  - {fileID: 21300000, guid: 518e5fc5473fdf94586c272591c7e129, type: 3}
+  - {fileID: 21300000, guid: ea391eb221f3ae44cbcc73eba7154f04, type: 3}
+  - {fileID: 21300000, guid: ea391eb221f3ae44cbcc73eba7154f04, type: 3}
+  - {fileID: 21300000, guid: ea391eb221f3ae44cbcc73eba7154f04, type: 3}
+  - {fileID: 21300000, guid: ea391eb221f3ae44cbcc73eba7154f04, type: 3}
+  - {fileID: 21300000, guid: ea391eb221f3ae44cbcc73eba7154f04, type: 3}
+  - {fileID: 21300000, guid: ea391eb221f3ae44cbcc73eba7154f04, type: 3}
+  - {fileID: 21300000, guid: 6b22b4b1286f96b499e96016af0b0378, type: 3}
+  anchors: []
+  frameCount: 24
+  fps: 60
+  loop: 1
