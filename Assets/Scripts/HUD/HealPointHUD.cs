@@ -15,6 +15,7 @@ public class HealPointHUD : MonoBehaviour
     {
         MaxRect = new Rect(ValueTransform.rect.position, ValueTransform.rect.size);
         OffsetMax = ValueTransform.offsetMax;
+        World.Instance.Player.OnHealPointChangeEvent += ChangeValueView;
     }
 
     public void ChangeValueView(float value, float max)

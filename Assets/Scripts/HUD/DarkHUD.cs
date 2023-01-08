@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DardHUD : MonoBehaviour
+public class DarkHUD : MonoBehaviour
 {
-     private float MaxValue;
+    private float MaxValue;
     [SerializeField]
     private RectTransform ValueTransform;
 

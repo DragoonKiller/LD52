@@ -15,7 +15,7 @@ public class ShootMovement : MonoBehaviour
         }
         get
         {
-            return Player.SunEnergy;
+            return Player.Energy;
         }
     }
 

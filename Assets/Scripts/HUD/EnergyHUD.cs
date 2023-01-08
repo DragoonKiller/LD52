@@ -15,6 +15,7 @@ public class EnergyHUD : MonoBehaviour
     {
         MaxRect = new Rect(ValueTransform.rect.position, ValueTransform.rect.size);
         OffsetMax = ValueTransform.offsetMax;
+        World.Instance.Player.OnEnergyChangeEvent += ChangeValueView;
     }
 
     public void ChangeValueView(float value, float max)
