@@ -8,7 +8,7 @@ public class Arrow : MonoBehaviour
     private Rigidbody Rigidbody;
     public void Lauch(Vector3 dir, float speed)
     {
-        Debug.Log(dir);
+        //Debug.Log(dir);
         transform.LookAt(transform.position + dir, Vector3.forward);
         Rigidbody.AddForce(dir * speed, ForceMode.Impulse);
     }
