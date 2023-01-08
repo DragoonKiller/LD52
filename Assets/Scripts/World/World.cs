@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class World : MonoBehaviour
@@ -19,11 +20,19 @@ public class World : MonoBehaviour
             Destroy(gameObject);
     }
 
+    public void Update()
+    {
+        Player.OnBeHit(0, DardDamage * Time.deltaTime);
+    }
+
+    [SerializeField]
+    private float SunEnergy_Max;
     public float SunEnergy
     {
         set
         {
             _SunEnergy = value;
+            OnSunEnergyChange?.Invoke(SunEnergy, SunEnergy_Max);
         }
         get
         {
@@ -31,6 +40,8 @@ public class World : MonoBehaviour
         }
     }
     private float _SunEnergy;
+
+    public event Action<float, float> OnSunEnergyChange;
 
     public int SunLevel
     {
@@ -40,19 +51,24 @@ public class World : MonoBehaviour
         }
     }
     [SerializeField]
-    private float EnergyPreSunLevel;
+    private float EnergyPreSunLevel = 200f;
 
+    [SerializeField]
+    private float DarkEnergy_Max;
     public float DarkEnergy
     {
         set
         {
             _DarkEnergy = value;
+            OnDarkEnergyChange?.Invoke(DarkEnergy, DarkEnergy_Max);
         }
         get
         {
             return _DarkEnergy;
         }
     }
+
+    public event Action<float, float> OnDarkEnergyChange;
     public int DarkLevel
     {
         get
@@ -61,6 +77,22 @@ public class World : MonoBehaviour
         }
     }
     private float _DarkEnergy;
+
     [SerializeField]
-    private float EnergyPreDarkLevel;
+    private float EnergyPreDarkLevel = 200f;
+
+    [SerializeField]
+    private float BasedDarkDamage = 0.5f;
+    [SerializeField]
+    private float AdditionalDarkDamage = 4;
+
+    public float DardDamage
+    {
+        get
+        {
+            int levelValue = Mathf.Clamp(DarkLevel - SunLevel, 0, 10);
+            float damge = BasedDarkDamage + AdditionalDarkDamage * levelValue;
+            return damge;
+        }
+    }
 }

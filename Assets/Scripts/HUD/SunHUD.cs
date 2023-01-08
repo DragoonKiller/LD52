@@ -15,6 +15,7 @@ public class SunHUD : MonoBehaviour
     {
         MaxRect = new Rect(ValueTransform.rect.position, ValueTransform.rect.size);
         OffsetMax = ValueTransform.offsetMax;
+        World.Instance.OnSunEnergyChange += ChangeValueView;
     }
 
     public void ChangeValueView(float value, float max)
