@@ -19,6 +19,11 @@ public class World : MonoBehaviour
             Destroy(gameObject);
     }
 
+    public void Update()
+    {
+        Player.OnBeHit(0, DardDamage * Time.deltaTime);
+    }
+
     public float SunEnergy
     {
         set
@@ -40,7 +45,7 @@ public class World : MonoBehaviour
         }
     }
     [SerializeField]
-    private float EnergyPreSunLevel;
+    private float EnergyPreSunLevel = 200f;
 
     public float DarkEnergy
     {
@@ -62,5 +67,20 @@ public class World : MonoBehaviour
     }
     private float _DarkEnergy;
     [SerializeField]
-    private float EnergyPreDarkLevel;
+    private float EnergyPreDarkLevel = 200f;
+
+    [SerializeField]
+    private float BasedDarkDamage = 0.5f;
+    [SerializeField]
+    private float AdditionalDarkDamage = 4;
+
+    public float DardDamage
+    {
+        get
+        {
+            int levelValue = Mathf.Clamp(DarkLevel - SunLevel, 0, 10);
+            float damge = BasedDarkDamage + AdditionalDarkDamage * levelValue;
+            return damge;
+        }
+    }
 }

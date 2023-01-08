@@ -45,6 +45,11 @@ public class Player : MonoBehaviour
         set
         {
             _HealPoint = value;
+            if(_HealPoint <=0)
+            {
+                _HealPoint = 0;
+                Death();
+            }
         }
         get
         {
@@ -53,6 +58,23 @@ public class Player : MonoBehaviour
     }
     private float _HealPoint;
     public event Action<float, float> OnHealPointChangeEvent;
+
+    public void OnBeHit(int type, float value)
+    {
+        HealPoint -= value;
+        switch(type)
+        {
+            case 0:
+            // 受伤特效
+            break;
+        }
+    }
+
+    private void Death()
+    {
+        OnDeathEvent?.Invoke();
+    }
+    public event Action OnDeathEvent;
 
     public bool ChangeSunEnergy(float value)
     {
