@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class ItemView : MonoBehaviour
@@ -8,23 +9,11 @@ public class ItemView : MonoBehaviour
     [SerializeField]
     private GameObject FrameSprite;
     [SerializeField]
-    private Sprite IconSprite;
+    private Image IconSprite;
     [SerializeField]
     TextMeshProUGUI NumText;
 
-    public Item Item
-    {
-        get
-        {
-            return _Item;
-        }
-        set
-        {
-            _Item = value;
-            IconSprite = value.Icon;
-        }
-    }
-    private Item _Item;
+    public ItemType Type;
 
     public int Num
     {

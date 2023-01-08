@@ -20,9 +20,20 @@ public class World : MonoBehaviour
             Destroy(gameObject);
     }
 
+    /// <summary>
+    /// 世界初始化
+    /// </summary>
+    void Start()
+    {
+        SunEnergy = 0;
+        SunSpreadEnerge = 0;
+        DarkEnergy = 0;
+    }
+
     public void Update()
     {
         Player.OnBeHit(0, DardDamage * Time.deltaTime);
+        DarkEnergy += DarkGrowSpeed * Time.deltaTime;
     }
 
     [SerializeField]
@@ -53,6 +64,25 @@ public class World : MonoBehaviour
     [SerializeField]
     private float EnergyPreSunLevel = 200f;
 
+    public float SunSpreadEnerge
+    {
+        get
+        {
+            return _SunSpreadEnerge;
+        }
+        set
+        {
+            _SunSpreadEnerge = value;
+            if(_SunSpreadEnerge > SunEnergy)
+            {
+                _SunSpreadEnerge = SunEnergy;
+            }
+            OnSunSpreadEnergeChange?.Invoke(_SunSpreadEnerge,SunEnergy_Max);
+        }
+    }
+    private float _SunSpreadEnerge;
+    public event Action<float, float> OnSunSpreadEnergeChange;
+
     [SerializeField]
     private float DarkEnergy_Max;
     public float DarkEnergy
@@ -77,6 +107,9 @@ public class World : MonoBehaviour
         }
     }
     private float _DarkEnergy;
+
+    [SerializeField]
+    private float DarkGrowSpeed;
 
     [SerializeField]
     private float EnergyPreDarkLevel = 200f;

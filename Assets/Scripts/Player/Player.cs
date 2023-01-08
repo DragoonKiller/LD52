@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField] public MoveComponent MoveComponent;
     [SerializeField] private ShootMovement ShootMovement;
     [SerializeField] private GiveEnergy GiveEnergy;
+    [SerializeField] public PlantMovement PlantMovement;
 
     public PlayerState PlayerState = PlayerState.Idle;
 
@@ -17,6 +18,7 @@ public class Player : MonoBehaviour
         MoveComponent.Init(this);
         ShootMovement.Init(this);
         GiveEnergy.Init(this);
+        PlantMovement.Init(this);
         Energy = Energy_Max;
         HealPoint = HealPoint_Max;
 

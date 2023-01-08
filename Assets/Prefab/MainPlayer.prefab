@@ -177,6 +177,64 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &2939581153701970055
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 27843723580031017}
+  - component: {fileID: 3074607483306307582}
+  - component: {fileID: 7515427818054017713}
+  m_Layer: 11
+  m_Name: Harvester
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &27843723580031017
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2939581153701970055}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8133490619229105188}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3074607483306307582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2939581153701970055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 294c60c2d743b4a4184654122aea963f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!135 &7515427818054017713
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2939581153701970055}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6322713484139014908
 GameObject:
   m_ObjectHideFlags: 0
@@ -423,6 +481,7 @@ GameObject:
   - component: {fileID: 8133490619229105190}
   - component: {fileID: 8133490619229105195}
   - component: {fileID: 8133490619229105189}
+  - component: {fileID: 7425510459171713135}
   m_Layer: 7
   m_Name: MainPlayer
   m_TagString: Untagged
@@ -446,6 +505,7 @@ Transform:
   - {fileID: 8133490619859272303}
   - {fileID: 4662830353065751758}
   - {fileID: 1420857279104692359}
+  - {fileID: 27843723580031017}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -480,6 +540,8 @@ MonoBehaviour:
   MoveComponent: {fileID: 8133490619229105195}
   ShootMovement: {fileID: 8133490619229105189}
   GiveEnergy: {fileID: 4131704421056720592}
+  PlantMovement: {fileID: 7425510459171713135}
+  PlayerState: 1
   Energy_Max: 100
   HealPoint_Max: 100
 --- !u!114 &8133490619229105195
@@ -522,6 +584,21 @@ MonoBehaviour:
   LauchPosition: {fileID: 8133490619859272303}
   IfCanShoot: 1
   shootForce: 50
+--- !u!114 &7425510459171713135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8133490619229105191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5da2b01b1698b0b44a6652559d987622, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlantRange: 6
+  PlantCost: 20
+  SunTreePrefab: {fileID: 1995128850269085538, guid: c7782eb0f10a0644da33f58bef740e8e, type: 3}
 --- !u!1 &8133490619251774211
 GameObject:
   m_ObjectHideFlags: 0

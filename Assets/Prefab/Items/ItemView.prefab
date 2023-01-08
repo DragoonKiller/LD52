@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 23470241821275253}
   - component: {fileID: 6270555039588595423}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -341,4 +341,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FrameSprite: {fileID: 2246943325097344751}
   IconSprite: {fileID: 0}
-  NumText: {fileID: 0}
+  NumText: {fileID: 8758512434087319704}
