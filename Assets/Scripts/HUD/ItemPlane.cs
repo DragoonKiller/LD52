@@ -59,21 +59,18 @@ public class ItemPlane : MonoBehaviour
                 return;
             }
         }
-        switch(item)
+        switch (item)
         {
-            case ItemType.Seed :
-            break;
-            case ItemType.NormalBird:
-            break;
-            case ItemType.LightBird:
-            break;
+            case ItemType.Seed:
+                SeedNum++;
+                return;
         }
 
         var newView = GetNewItemView();
         newView.gameObject.SetActive(true);
         newView.Type = item;
         newView.Num = num;
-        
+
         ItemViews.Add(newView);
     }
 

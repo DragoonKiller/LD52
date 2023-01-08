@@ -10,9 +10,10 @@ public class Harvester : MonoBehaviour
     /// <param name="other">The other Collider involved in this collision.</param>
     void OnTriggerEnter(Collider other)
     {
-        if(other.TryGetComponent<ItemComponent>(out ItemComponent itme))
+        if(other.transform.parent.TryGetComponent<ItemComponent>(out ItemComponent itme))
         {
-
+            Debug.Log("xx");
+            itme.Harvested(transform);
         }
     }
 }

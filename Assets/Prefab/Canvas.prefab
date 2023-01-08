@@ -105,7 +105,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: bcb350c3169114a48a06116d0d439651, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -686,6 +686,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Content: {fileID: 7352910575550033485}
   seedNum: {fileID: 9208379656194323251}
+  NomarlBirdIcon: {fileID: 0}
+  LightBirdIcon: {fileID: 0}
   ItemViewPrefab: {fileID: 6048552247587390073, guid: 9a48d5c45f635d549bf5f76da65f377d, type: 3}
 --- !u!1 &7352910576304729915
 GameObject:

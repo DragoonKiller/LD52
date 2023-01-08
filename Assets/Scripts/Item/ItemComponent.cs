@@ -30,9 +30,9 @@ public class ItemComponent : MonoBehaviour
 
             transform.position = new Vector3(x, y, z);
 
-            if(Timer >= AllTime)
+            if (Timer >= AllTime)
             {
-                ItemPlane.Instance.AddItem(Itemtype,1);
+                ItemPlane.Instance.AddItem(Itemtype, 1);
                 Destroy(gameObject);
             }
         }
@@ -40,6 +40,8 @@ public class ItemComponent : MonoBehaviour
 
     public void Harvested(Transform target)
     {
+        if (ifChase)
+            return;
         StartPosition = transform.position;
         Target = target;
         Distance = Vector3.Distance(target.transform.position, transform.position);
