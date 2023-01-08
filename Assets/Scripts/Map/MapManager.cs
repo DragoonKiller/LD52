@@ -20,7 +20,10 @@ public class MapManager : Singleton<MapManager>
 
     public void UpdateDarknese()
     {
-        for (int x = 0; x < size.x; x++)
+        // 跳帧, 每次只刷新三分之一格子.
+        const int skipCount = 3;
+        var frame = Time.frameCount;
+        for (int x = frame % skipCount; x < size.x; x += skipCount)
         {
             for (int y = 0; y < size.y; y++)
             {
@@ -48,6 +51,7 @@ public class MapManager : Singleton<MapManager>
     private void Update()
     {
         UpdateDarknese();
+        
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hitResult = new RaycastHit();
