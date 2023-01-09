@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 344750829995839762}
   - component: {fileID: 185851963880195718}
   - component: {fileID: 6072491041449085018}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Deco2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2297159459262908202}
   - component: {fileID: 493305068665963440}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -194,7 +194,7 @@ GameObject:
   - component: {fileID: 3807573805005264129}
   - component: {fileID: 6338592947707144926}
   - component: {fileID: 6948423501592398872}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: LightBird
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248,10 +248,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02736c9b3f8b54e4c83f0baf6afe4680, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LifeTime: 100
+  LifeTime: 60
   lightSource: {fileID: 5620125482466757213}
   decos: {fileID: 5663869029257331832}
   Rigidbody: {fileID: 6338592947707144926}
+  EnergySpeed: 2
 --- !u!1 &5663869029257331832
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,7 +262,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4588646239094399482}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Decos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -296,7 +297,7 @@ GameObject:
   - component: {fileID: 1045677686313149436}
   - component: {fileID: 4875309973248246353}
   - component: {fileID: 1052066952456103722}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Harvester
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -331,6 +332,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HarvestedItem: 0
+  IfHasBouns: 0
+  BasedBouns: 0
+  AddBouns: 0
 --- !u!135 &1052066952456103722
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -342,7 +346,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.6
+  m_Radius: 4
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6556486597163208386
 GameObject:
@@ -355,7 +359,7 @@ GameObject:
   - component: {fileID: 2386222802952066309}
   - component: {fileID: 2220125379642712013}
   - component: {fileID: 4998626829184140097}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Deco1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -453,6 +457,10 @@ PrefabInstance:
     - target: {fileID: 1797447726857775250, guid: ff2e195deb4688c43ae4106b168d2209, type: 3}
       propertyPath: m_Name
       value: TreeProjectionLight
+      objectReference: {fileID: 0}
+    - target: {fileID: 1797447726857775250, guid: ff2e195deb4688c43ae4106b168d2209, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1797447726857775251, guid: ff2e195deb4688c43ae4106b168d2209, type: 3}
       propertyPath: m_RootOrder
@@ -574,6 +582,10 @@ PrefabInstance:
     - target: {fileID: 4512714320938287845, guid: 129900b9764ad794b948ee1c05294159, type: 3}
       propertyPath: m_Name
       value: EffectLightSource
+      objectReference: {fileID: 0}
+    - target: {fileID: 4512714320938287845, guid: 129900b9764ad794b948ee1c05294159, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 129900b9764ad794b948ee1c05294159, type: 3}

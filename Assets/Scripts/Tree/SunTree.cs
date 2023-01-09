@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Prota;
 using UnityEngine;
 
-public class SunTree : MonoBehaviour
+public class SunTree : MonoBehaviour, IProduction
 {
     [SerializeField]
     private SpriteRenderer Sprite;
@@ -19,10 +19,10 @@ public class SunTree : MonoBehaviour
     private Vector3 GorwPosition1;
     [SerializeField]
     private Vector3 GorwPosition2;
-    
+
     Vector2Int coord => new Vector2Int(this.transform.position.x.RoundToInt(), this.transform.position.z.RoundToInt());
     public LightSource lightSource;
-    
+
     [SerializeField]
     private ItemComponent CreatedFruitPrefab;
 
@@ -33,8 +33,10 @@ public class SunTree : MonoBehaviour
     private float GrowTimer = 0;
 
     public float BasedSunSpreadEnerge;
+    public float BasedSunAddSpeed;
 
     public TreeGrowState GrowState;
+
 
     /// <summary>
     /// Start is called on the frame when a script is enabled just before
@@ -42,7 +44,11 @@ public class SunTree : MonoBehaviour
     /// </summary>
     void Start()
     {
-        GrowState = TreeGrowState.Seed;
+        //GrowState = TreeGrowState.Seed;
+        foreach (var position in OpenCreatPositions)
+        {
+            position.Init(this);
+        }
     }
 
     void Update()
@@ -69,6 +75,7 @@ public class SunTree : MonoBehaviour
                     Light.SetActive(true);
                     Sprite.transform.localPosition = GorwPosition2;
                     World.Instance.SunSpreadEnerge += BasedSunSpreadEnerge;
+                    World.Instance.SunEnergySpeed += BasedSunAddSpeed;
                     lightSource.gameObject.SetActive(true);
                 }
                 break;
@@ -77,7 +84,7 @@ public class SunTree : MonoBehaviour
                 {
                     GrowTimer = 0;
                     // Debug.Log(GetRandomPosition());
-                    Instantiate(CreatedFruitPrefab, GetRandomPosition(), Quaternion.identity);
+                    CreatFruit();
                 }
                 break;
         }
@@ -96,7 +103,28 @@ public class SunTree : MonoBehaviour
         pos = new Vector3(pos.x, 0, pos.z);
         return pos;
     }
-    
+
+    public List<CreatFruitPoint> OpenCreatPositions = new List<CreatFruitPoint>();
+    List<CreatFruitPoint> CloseCreatPositions = new List<CreatFruitPoint>();
+
+    private void CreatFruit()
+    {
+        if (OpenCreatPositions.Count <= 0)
+            return;
+        int index = Random.Range(0, OpenCreatPositions.Count);
+        var position = OpenCreatPositions[index];
+        var fruit = Instantiate(CreatedFruitPrefab, position.transform.position, Quaternion.identity);
+        position.SetFruit(fruit);
+        OpenCreatPositions.Remove(position);
+        CloseCreatPositions.Add(position);
+    }
+
+    public void CloseFruit(CreatFruitPoint point)
+    {
+        CloseCreatPositions.Remove(point);
+        OpenCreatPositions.Add(point);
+    }
+
 }
 
 public enum TreeGrowState

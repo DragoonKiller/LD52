@@ -30,7 +30,7 @@ public class AcceptEnergy : MonoBehaviour
     {
         if (ifAcceptEnergy)
         {
-            if (Player.Energy >= 0)
+            if (Player.Energy > 0)
             {
                 switch (Type)
                 {
@@ -49,6 +49,19 @@ public class AcceptEnergy : MonoBehaviour
                 TriggerCollider.enabled = true;
             }
 
+        }
+    }
+
+    public void GetEnergyUpdate(float speed)
+    {
+        switch (Type)
+        {
+            case AceeptType.CenterSunTree:
+                World.Instance.SunEnergy += speed * Time.deltaTime;
+                break;
+            case AceeptType.ProductionTree:
+                ProductionTree.Energy += speed * Time.deltaTime;
+                break;
         }
     }
 

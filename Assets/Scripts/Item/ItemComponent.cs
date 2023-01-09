@@ -41,16 +41,17 @@ public class ItemComponent : MonoBehaviour
         }
     }
 
-    public void Harvested(Transform target)
+    public bool Harvested(Transform target)
     {
         if (ifChase)
-            return;
+            return false;
         StartPosition = transform.position;
         Target = target;
         Distance = Vector3.Distance(target.transform.position, transform.position);
         AllTime = Distance / Speed;
         ifChase = true;
         OnHarvestedEvent?.Invoke(this);
+        return true;
     }
 
     public event Action<ItemComponent> OnHarvestedEvent;

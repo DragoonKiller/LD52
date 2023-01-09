@@ -195,6 +195,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HarvestedItem: 25
+  IfHasBouns: 1
+  BasedBouns: 2
+  AddBouns: 2
 --- !u!136 &3942555929277996583
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -206,6 +209,6 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.6
-  m_Height: 2
+  m_Height: 5
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}

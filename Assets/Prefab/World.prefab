@@ -50,7 +50,8 @@ MonoBehaviour:
   SunEnergy_Max: 800
   EnergyPreSunLevel: 100
   DarkEnergy_Max: 800
-  DarkGrowSpeed: 0.3
+  DarkAddSpeed: 0.1
+  DarkGrowSpeed: 2
   EnergyPreDarkLevel: 100
-  BasedDarkDamage: 0.5
+  BasedDarkDamage: 0
   AdditionalDarkDamage: 4

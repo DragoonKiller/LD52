@@ -16,9 +16,6 @@ public class ItemPlane : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-
-        // 测试用
-        SeedNum = 3;
     }
 
     void Update()

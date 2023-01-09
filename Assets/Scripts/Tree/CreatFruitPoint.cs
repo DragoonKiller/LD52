@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CreatFruitPoint : MonoBehaviour
 {
-    public ProductionTree Tree;
+    public IProduction Tree;
     public ItemComponent CreatedFruit { private set; get; }
 
     public void SetFruit(ItemComponent fruit)
@@ -20,7 +20,7 @@ public class CreatFruitPoint : MonoBehaviour
         Tree.CloseFruit(this);
     }
 
-    public void Init(ProductionTree tree)
+    public void Init(IProduction tree)
     {
         Tree = tree;
     }

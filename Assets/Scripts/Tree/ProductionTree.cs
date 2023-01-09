@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProductionTree : MonoBehaviour
+public class ProductionTree : MonoBehaviour, IProduction
 {
     [SerializeField]
     private SpriteRenderer Sprite;

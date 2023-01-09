@@ -9,11 +9,15 @@ public class CameraController : MonoBehaviour
 
     void Awake()
     {
+        if (Target == null)
+            return;
         Offset = transform.position - Target.transform.position;
     }
 
     void Update()
     {
+        if (Target == null)
+            return;
         transform.position = Target.transform.position + Offset;
     }
 }

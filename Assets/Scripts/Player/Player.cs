@@ -42,6 +42,8 @@ public class Player : MonoBehaviour
             _Energy = value;
             if (_Energy > Energy_Max)
                 _Energy = Energy_Max;
+            if (_Energy < 0)
+                _Energy = 0;
             OnEnergyChangeEvent?.Invoke(Energy, Energy_Max);
         }
         get
@@ -123,7 +125,7 @@ public class Player : MonoBehaviour
             GiveEnergy.SetActive(false);
         }
     }
-    
+
     void Update()
     {
         var pos = this.transform.position;

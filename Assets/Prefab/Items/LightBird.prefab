@@ -150,7 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Itemtype: 4
   Speed: 10
-  Num: 5
+  Num: 1
 --- !u!1 &6677608529657825061
 GameObject:
   m_ObjectHideFlags: 0

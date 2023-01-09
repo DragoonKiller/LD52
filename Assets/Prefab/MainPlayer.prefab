@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2040181393}
   m_LocalRotation: {x: 0.30121344, y: -0, z: -0, w: 0.9535568}
-  m_LocalPosition: {x: 0, y: 12.9, z: -18.1}
+  m_LocalPosition: {x: 0, y: 19.37, z: -27.31}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -347,6 +347,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HarvestedItem: -1
+  IfHasBouns: 0
+  BasedBouns: 0
+  AddBouns: 0
 --- !u!136 &2601622828232924470
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -358,9 +361,9 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 1.5
-  m_Height: 0.8
+  m_Height: 4
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.25171196, z: 0}
 --- !u!1 &6322713484139014908
 GameObject:
   m_ObjectHideFlags: 0
@@ -689,7 +692,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Rigidbody: {fileID: 8133490619229105194}
-  Speed: 5
+  Speed: 7
   IfCanMove: 1
   anim: {fileID: 0}
   recordDir: {x: 0, y: 0}
@@ -735,7 +738,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlantRange: 6
-  PlantCost: 20
+  PlantCost: 0
   SunTreePrefab: {fileID: 1995128850269085538, guid: c7782eb0f10a0644da33f58bef740e8e, type: 3}
 --- !u!81 &1884032683
 AudioListener:

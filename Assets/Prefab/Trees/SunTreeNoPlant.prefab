@@ -103,7 +103,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2855179937979401746}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.8, z: 0}
+  m_LocalPosition: {x: 0, y: 1.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -151,7 +151,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 05e733ad4e2544d4c85b0607480f35b8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 151eed48ac478644192846426398272d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 3565726771736993099}
   - component: {fileID: 1995128850269085538}
   m_Layer: 0
-  m_Name: SunTree
+  m_Name: SunTreeNoPlant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -240,9 +240,9 @@ MonoBehaviour:
   GrowTime1: 10
   GrowTime2: 10
   FruitTime: 15
-  BasedSunSpreadEnerge: 30
-  BasedSunAddSpeed: 0.2
-  GrowState: 0
+  BasedSunSpreadEnerge: 0
+  BasedSunAddSpeed: 0
+  GrowState: 2
   RandomMin: 0.5
   RandomMax: 4
   OpenCreatPositions:

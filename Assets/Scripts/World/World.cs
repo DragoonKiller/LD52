@@ -29,15 +29,17 @@ public class World : MonoBehaviour
     {
         SunEnergy = 0;
         SunSpreadEnerge = 0;
-        DarkEnergy = 0;
+        DarkEnergy = 100f;
         InitSunUIFrameEvent?.Invoke(EnergyPreSunLevel, SunEnergy_Max);
         InitDarkUIFrameEvent?.Invoke(EnergyPreDarkLevel, DarkEnergy_Max);
     }
 
     public void Update()
     {
-        Player.OnBeHit(0, DardDamage * Time.deltaTime);
+        Player.OnBeHit(0, DarkDamage * Time.deltaTime);
         DarkEnergy += DarkGrowSpeed * Time.deltaTime;
+        DarkGrowSpeed += DarkAddSpeed * Time.deltaTime;
+        SunEnergy += SunEnergySpeed * Time.deltaTime;
 
         if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.F))
         {
@@ -66,6 +68,8 @@ public class World : MonoBehaviour
         }
     }
     private float _SunEnergy;
+
+    public float SunEnergySpeed;
 
     public event Action<float, float> OnSunEnergyChangeEvent;
 
@@ -117,6 +121,8 @@ public class World : MonoBehaviour
 
     [SerializeField]
     private float DarkEnergy_Max;
+    [SerializeField]
+    private float DarkAddSpeed;
     public float DarkEnergy
     {
         set
@@ -143,7 +149,7 @@ public class World : MonoBehaviour
     {
         get
         {
-            return (int)(_DarkEnergy / EnergyPreDarkLevel);
+           return _DarkLevel;
         }
         set
         {
@@ -169,7 +175,7 @@ public class World : MonoBehaviour
     [SerializeField]
     private float AdditionalDarkDamage = 4;
 
-    public float DardDamage
+    public float DarkDamage
     {
         get
         {
