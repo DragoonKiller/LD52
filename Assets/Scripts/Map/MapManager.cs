@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Prota;
+using Prota.Timer;
 
 
 public class MapManager : Singleton<MapManager>
@@ -14,6 +15,9 @@ public class MapManager : Singleton<MapManager>
     public float[,] lightvalue;//0f~1f
     public float threshhold = 0.5f;
     public float darklevel = 0f;
+    
+    public static bool canUpdate = false;
+    
     private void Awake()
     {
         darknese = new float[size.x, size.y];
@@ -21,6 +25,8 @@ public class MapManager : Singleton<MapManager>
         
         for(int i = 0; i < size.x; i++) for(int j = 0; j < size.y; j++)
              darknese[i, j] = (new Vector2(i, j).To(size / 2).magnitude > 20 ? 1 : 0);
+            
+        Timer.New(4, this.gameObject.LifeSpan(), () => canUpdate = true);
     }
     
     public void UpdateDarknese()
@@ -42,8 +48,20 @@ public class MapManager : Singleton<MapManager>
                 || (y >= 1 && darknese[x, y - 1] >= 1)
                 || (y < size.y - 1 && darknese[x, y + 1] >= 1))
                 {
-                    delta *= skipCount;
-                    darknese[x, y] = Mathf.Clamp01(darknese[x, y] - delta * 0.001f);
+                    if(delta < 0)       // 黑暗增长
+                    {
+                        var mult = (World.Instance.DarkEnergy - World.Instance.SunEnergy + 200).Max(100f) / 100;
+                        var darkPerSec = 1;
+                        delta *= skipCount * mult * Time.deltaTime * darkPerSec;
+                    }
+                    else    // 光亮增长
+                    {
+                        var mult = (World.Instance.SunEnergy - World.Instance.DarkEnergy).Max(50f) / 100;
+                        var lightPerSec = 1;
+                        delta *= skipCount * mult * Time.deltaTime * lightPerSec;
+                    }
+                    
+                    darknese[x, y] = Mathf.Clamp01(darknese[x, y] - delta);
                 }
             }
         }
@@ -67,7 +85,7 @@ public class MapManager : Singleton<MapManager>
     
     private void Update()
     {
-        UpdateDarknese();
+        if(canUpdate) UpdateDarknese();
         
         if (Input.GetMouseButtonDown(0))
         {
