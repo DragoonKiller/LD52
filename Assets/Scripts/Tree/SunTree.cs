@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Prota;
 using UnityEngine;
 
 public class SunTree : MonoBehaviour
@@ -18,7 +19,10 @@ public class SunTree : MonoBehaviour
     private Vector3 GorwPosition1;
     [SerializeField]
     private Vector3 GorwPosition2;
-
+    
+    Vector2Int coord => new Vector2Int(this.transform.position.x.RoundToInt(), this.transform.position.z.RoundToInt());
+    public LightSource lightSource;
+    
     [SerializeField]
     private ItemComponent CreatedFruitPrefab;
 
@@ -65,13 +69,14 @@ public class SunTree : MonoBehaviour
                     Light.SetActive(true);
                     Sprite.transform.localPosition = GorwPosition2;
                     World.Instance.SunSpreadEnerge += BasedSunSpreadEnerge;
+                    lightSource.gameObject.SetActive(true);
                 }
                 break;
             case TreeGrowState.Ripe:
                 if (GrowTimer > FruitTime)
                 {
                     GrowTimer = 0;
-                    Debug.Log(GetRandomPosition());
+                    // Debug.Log(GetRandomPosition());
                     Instantiate(CreatedFruitPrefab, GetRandomPosition(), Quaternion.identity);
                 }
                 break;
@@ -91,6 +96,7 @@ public class SunTree : MonoBehaviour
         pos = new Vector3(pos.x, 0, pos.z);
         return pos;
     }
+    
 }
 
 public enum TreeGrowState

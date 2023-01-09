@@ -65,10 +65,6 @@ public class MapManager : Singleton<MapManager>
         }
     }
     
-    public void SetLightSource(LightSourceData lightsource, Vector2Int coord, bool remove = false)
-    {
-        SetLightSource(lightsource.intensity, lightsource.radius, coord, remove);
-    }
     private void Update()
     {
         UpdateDarknese();

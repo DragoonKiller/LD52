@@ -1,24 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
+using Prota;
 using UnityEngine;
 
 public class LightSource : MonoBehaviour
 {
-    public LightSourceData lightdata;
-    // Start is called before the first frame update
-    void Start()
-    {
-        MapManager.Get().SetLightSource(lightdata, new Vector2Int((int)transform.position.x, (int)transform.position.z));
-    }
-
-    // Update is called once per frame
-    void Update()
+    public float intensity;
+    public int radius;
+    Vector2Int coord => new Vector2Int(this.transform.position.x.RoundToInt(), this.transform.position.z.RoundToInt());
+    public bool isActivated;
+    
+    void Awake()
     {
         
     }
-
-    private void OnDestroy()
+    
+    void Start()
     {
-        MapManager.Get().SetLightSource(lightdata, new Vector2Int((int)transform.position.x, (int)transform.position.z),true);
+        MapManager.instance.SetLightSource(intensity, radius, coord);
+        isActivated = true;
+    }
+    
+    void OnDestroy()
+    {
+        if(!isActivated) return;
+        MapManager.instance.SetLightSource(intensity, radius, coord, true);
     }
 }

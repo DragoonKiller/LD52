@@ -58,8 +58,8 @@ public class TileInfo : MonoBehaviour
         lightness.gameObject.SetActive(light != null);
         darkness.gameObject.SetActive(dark != null);
         hint.gameObject.SetActive(other != null);
-        lightness.text = light != null ? $"Lightness { (light.Value * 100).FloorToInt() }%" : "";
-        darkness.text = dark != null ? $"Darkness { (dark.Value * 100).FloorToInt() }%" : "";
+        lightness.text = light != null ? $"Lightness { (light.Value * 100).FloorToInt() }%" : "No Light";
+        darkness.text = dark != null ? $"Darkness { (dark.Value * 100).FloorToInt() }%" : "No Darkness";
         hint.text = other;
     }
 }
