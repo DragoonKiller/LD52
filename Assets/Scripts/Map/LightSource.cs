@@ -36,6 +36,6 @@ public class LightSource : MonoBehaviour
     void OnDestroy()
     {
         if(!isActivated) return;
-        MapManager.instance?.SetLightSource(intensity, radius, coord, true);
+        if(MapManager.instance) MapManager.instance.SetLightSource(intensity, radius, coord, true);
     }
 }

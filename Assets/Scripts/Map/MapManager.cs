@@ -25,8 +25,6 @@ public class MapManager : Singleton<MapManager>
         
         for(int i = 0; i < size.x; i++) for(int j = 0; j < size.y; j++)
              darknese[i, j] = (new Vector2(i, j).To(size / 2).magnitude > 20 ? 1 : 0);
-            
-        Timer.New(4, this.gameObject.LifeSpan(), () => canUpdate = true);
     }
     
     public void UpdateDarknese()
