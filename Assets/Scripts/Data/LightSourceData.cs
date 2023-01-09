@@ -6,6 +6,6 @@ using UnityEngine;
 public class LightSourceData : ScriptableObject
 {
     public float intensity;
-    public int raidius;
+    public int radius;
     public float lifetime;
 }

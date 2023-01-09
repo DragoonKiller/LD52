@@ -2,6 +2,8 @@ using Prota.Unity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Prota;
+
 
 public class MapManager : Singleton<MapManager>
 {
@@ -16,8 +18,11 @@ public class MapManager : Singleton<MapManager>
     {
         darknese = new float[size.x, size.y];
         lightvalue = new float[size.x, size.y];
+        
+        for(int i = 0; i < size.x; i++) for(int j = 0; j < size.y; j++)
+             darknese[i, j] = (new Vector2(i, j).To(size / 2).magnitude > 20 ? 1 : 0);
     }
-
+    
     public void UpdateDarknese()
     {
         // 跳帧, 每次只刷新三分之一格子.
@@ -28,25 +33,41 @@ public class MapManager : Singleton<MapManager>
             for (int y = 0; y < size.y; y++)
             {
                 float delta = lightvalue[x, y] - threshhold;
-                darknese[x, y] = Mathf.Clamp01(darknese[x, y] - delta * 0.001f);
+                
+                // 只有相邻格子是被完全诅咒的格子才会扩散诅咒.
+                // 但是只要有光就可以消灭诅咒.
+                if(delta > 0
+                || (x >= 1 && darknese[x - 1, y] >= 1)
+                || (x < size.x - 1 && darknese[x + 1, y] >= 1)
+                || (y >= 1 && darknese[x, y - 1] >= 1)
+                || (y < size.y - 1 && darknese[x, y + 1] >= 1))
+                {
+                    delta *= skipCount;
+                    darknese[x, y] = Mathf.Clamp01(darknese[x, y] - delta * 0.001f);
+                }
             }
         }
     }
-
-    public void SetLightSource(LightSourceData lightsource, Vector2Int coord, bool remove = false)
+    
+    public void SetLightSource(float intensity, int radius, Vector2Int coord, bool remove = false)
     {
-        for (int x = -lightsource.raidius; x <= lightsource.raidius; x++)
+        for (int x = -radius; x <= radius; x++)
         {
-            for (int y = -lightsource.raidius; y <= lightsource.raidius; y++)
+            for (int y = -radius; y <= radius; y++)
             {
                 //Calculate light
-                float l = Mathf.Clamp01(1f - ((float)(x * x + y * y)) / (lightsource.raidius * lightsource.raidius)) * lightsource.intensity;
-                print(l);
+                float l = Mathf.Clamp01(1f - ((float)(x * x + y * y)) / (radius * radius)) * intensity;
+                // print(l);
                 int i = Mathf.Clamp(x + coord.x, 0, size.x - 1);
                 int j = Mathf.Clamp(y + coord.y, 0, size.y - 1);
                 lightvalue[i, j] += remove ? -l : l;
             }
         }
+    }
+    
+    public void SetLightSource(LightSourceData lightsource, Vector2Int coord, bool remove = false)
+    {
+        SetLightSource(lightsource.intensity, lightsource.radius, coord, remove);
     }
     private void Update()
     {
