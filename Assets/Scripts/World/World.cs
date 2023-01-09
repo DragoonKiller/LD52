@@ -81,7 +81,16 @@ public class World : MonoBehaviour
             return _SunLevel;
         }
     }
-    private int _SunLevel = 0;
+    private int _SunLevel = -1;
+
+    public int MaxSunLevel
+    {
+        get
+        {
+            return (int)(SunEnergy_Max / EnergyPreSunLevel);
+        }
+    }
+
     [SerializeField]
     private float EnergyPreSunLevel = 200f;
 
@@ -142,7 +151,7 @@ public class World : MonoBehaviour
             OnDarkLevelChangeEvent?.Invoke(_DarkLevel);
         }
     }
-    private int _DarkLevel;
+    private int _DarkLevel = -1;
 
     public event Action<int> OnDarkLevelChangeEvent;
 

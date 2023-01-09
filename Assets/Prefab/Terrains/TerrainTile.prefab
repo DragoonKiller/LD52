@@ -46,8 +46,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coord: {x: 0, y: 0}
-  lightness: 0
-  darkness: 0
   cursed:
   - {fileID: 21300000, guid: f13b241cfb40ff14f8f21bb29e0d2f3a, type: 3}
   - {fileID: 21300000, guid: 92f1174b1ab2ecc4085d38cf20a9eece, type: 3}
@@ -61,6 +59,8 @@ MonoBehaviour:
   puringSfx: {fileID: 3683679796814817709, guid: b3801bc5dfc2cf24384907d863e8045f, type: 3}
   displayingCursingSfx: 0
   displayingPuringSfx: 0
+  lightness: 0
+  darkness: 0
 --- !u!1 &9167741292350570278
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,7 +133,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -5
   m_Sprite: {fileID: 21300000, guid: f13b241cfb40ff14f8f21bb29e0d2f3a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

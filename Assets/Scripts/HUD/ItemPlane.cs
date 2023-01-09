@@ -152,6 +152,7 @@ public class ItemPlane : MonoBehaviour
                 itemView.gameObject.SetActive(false);
                 ItemViews.Remove(itemView);
                 CloseItemViews.Add(itemView);
+                itemView.SetFocus(false);
                 FocusIndex--;
                 if (FocusIndex <= 0)
                     FocusIndex = 0;
