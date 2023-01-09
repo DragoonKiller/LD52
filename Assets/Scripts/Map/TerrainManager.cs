@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Prota.Unity;
 using UnityEngine;
 
-public class TerrainManager : Singleton<TerrainManager>
+public class TerrainManager : MonoBehaviour
 {
     public TerrainTile tile;
     
@@ -26,7 +26,7 @@ public class TerrainManager : Singleton<TerrainManager>
         {
             cur += 1;
             if(cur >= tiles.Count) cur = 0;
-            tiles[i].ManualUpdate();
+            tiles[cur].ManualUpdate();
         }
     }
 
@@ -34,16 +34,16 @@ public class TerrainManager : Singleton<TerrainManager>
     {
         var mapManager = MapManager.Get();
         var size = mapManager.size;
-        var rot = Quaternion.Euler(90, 0, 0);
         var tr = root;
         
         for (int x = 0; x < size.x; x++)
         {
             for (int y = 0; y < size.y; y++)
             {
-                var t = Instantiate(tile, new Vector3(x, 0, y), rot, tr);
+                var t = Instantiate(tile, new Vector3(x, 0, y), Quaternion.identity, tr);
                 t.coord = new Vector2Int(x, y);
                 tiles.Add(t);
+                t.gameObject.name = $"{x},{y}";
             }
         }
         

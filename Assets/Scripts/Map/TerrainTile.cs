@@ -7,23 +7,28 @@ public class TerrainTile : MonoBehaviour
 {
     public Vector2Int coord;
     
-    bool displayingCurse = false;  // false: normal, true: cursed.
-    
     public Sprite[] cursed;
     public Sprite[] normal;
     
     int rid = 0;
     
-    SpriteRenderer rd;
+    public SpriteRenderer rd;
     
     Sprite curSprite;
     
     public GameObject cursingSfx;
+    public GameObject puringSfx;
     GameObject curSfx;
+    
+    [Header("Runtime")]
+    
+    public bool displayingCursingSfx;
+    public bool displayingPuringSfx;
+    public float lightness;
+    public float darkness;
     
     void Awake()
     {
-        rd = this.GetComponent<SpriteRenderer>();
         rd.sprite = normal[Random.Range(0, normal.Length)];
         rid = Random.Range(0, 50);
         CheckAndReplaceSprite(normal[rid % normal.Length]);
@@ -31,27 +36,42 @@ public class TerrainTile : MonoBehaviour
     
     public void ManualUpdate()
     {
-        var curseLevel = MapManager.instance.darknese[coord.x, coord.y];
+        var mapMgr = MapManager.instance;
+        lightness = mapMgr.lightvalue[coord.x, coord.y];
+        var curseLevel = darkness = mapMgr.darknese[coord.x, coord.y];
+        var thr = mapMgr.threshhold;
+        
         if(curseLevel >= 1.0f) // 诅咒 100%
         {
             CheckAndReplaceSprite(cursed[rid % cursed.Length]);
-            curSfx?.Destroy();
-            curSfx = null;
+            ClearSfx();
         }
-        if(curseLevel <= 0.0f) // 诅咒 0%
+        else if(curseLevel <= 0.0f) // 诅咒 0%
         {
             CheckAndReplaceSprite(normal[rid % normal.Length]);
-            curSfx?.Destroy();
-            curSfx = null;
+            ClearSfx();
         }
         else // 其他, 正在被感染.
         {
             CheckAndReplaceSprite(normal[rid % normal.Length]);
-            if(curSfx != null)
+            if(curSfx == null
+            || (displayingCursingSfx && lightness >= thr)
+            || (displayingPuringSfx && lightness < thr))
             {
-                curSfx = GameObject.Instantiate(cursingSfx, this.transform, false);
+                ClearSfx();
+                bool isCursing = lightness < thr;
+                curSfx = GameObject.Instantiate(isCursing ? cursingSfx : puringSfx, this.transform, false);
+                displayingCursingSfx = isCursing;
+                displayingPuringSfx = !isCursing;
             }
         }
+    }
+    
+    void ClearSfx()
+    {
+        curSfx?.Destroy();
+        curSfx = null;
+        displayingCursingSfx = displayingPuringSfx = false;
     }
     
     void CheckAndReplaceSprite(Sprite sprite)

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Prota;
 using UnityEngine;
 
 public class ShootMovement : MonoBehaviour
@@ -38,7 +39,7 @@ public class ShootMovement : MonoBehaviour
     public bool IfCanShoot = true;
 
     [SerializeField]
-    private float shootForce = 50f;
+    private float speed = 50f;
 
     int groundLayerMask;
 
@@ -83,7 +84,9 @@ public class ShootMovement : MonoBehaviour
 
                 if (bird != null)
                 {
-                    bird.Launch(shootDir, shootForce);
+                    var from = new Vector2(LauchPosition.position.x, LauchPosition.position.z);
+                    var to = new Vector2(hitPoint.x, hitPoint.z);
+                    bird.Launch(from, to, speed);
                 }
             }
         }

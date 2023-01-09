@@ -586,7 +586,7 @@ MonoBehaviour:
   LightBirdPrefab: {fileID: 6948423501592398872, guid: 5cdf8965860ba3f4eacecbd00de953c2, type: 3}
   LauchPosition: {fileID: 8133490619859272303}
   IfCanShoot: 1
-  shootForce: 50
+  speed: 15
 --- !u!114 &7425510459171713135
 MonoBehaviour:
   m_ObjectHideFlags: 0
