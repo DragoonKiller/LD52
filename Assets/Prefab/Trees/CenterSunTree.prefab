@@ -283,7 +283,7 @@ MonoBehaviour:
   TriggerCollider: {fileID: 2085477817781103013}
   ProductionTree: {fileID: 0}
   ifAcceptEnergy: 0
-  Type: 0
+  Type: 2
 --- !u!135 &2085477817781103013
 SphereCollider:
   m_ObjectHideFlags: 0
