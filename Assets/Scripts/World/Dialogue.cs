@@ -24,6 +24,7 @@ public class Dialogue : MonoBehaviour
         if(MapManager.canUpdate && Input.GetKeyDown(KeyCode.R))
         {
             cur += 1;
+            // cur %= dialogues.Count;
             UpdateText();
         }
     }
