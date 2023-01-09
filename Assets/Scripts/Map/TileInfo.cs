@@ -35,13 +35,13 @@ public class TileInfo : MonoBehaviour
         if(!Physics.Raycast(ray, out RaycastHit hit, 200f, groundLayerMask)) return false;
         var pos = new Vector2(hit.point.x, hit.point.z);
         var mapMgr = MapManager.instance;
-        if(!(pos.x.In(0, mapMgr.size.x) && pos.y.In(0, mapMgr.size.y))) return false; 
-        var coord = pos.FloorToInt();
+        var coord = new Vector2Int(pos.x.RoundToInt(), pos.y.RoundToInt());
+        if(!(coord.x.In(0, mapMgr.size.x - 1) && coord.y.In(0, mapMgr.size.y - 1))) return false; 
         var light = mapMgr.lightvalue[coord.x, coord.y];
         var dark = mapMgr.darknese[coord.x, coord.y];
         
         Hint(
-            light > 0 && (dark > 0 || light < 1.0f) ? light : null,
+            light > 0 && (dark > 0 || light < mapMgr.threshhold) ? light : null,
             dark > 0 && dark < 1.0f ? dark : null,
             light >= mapMgr.threshhold && dark > 0 ? "Darkness is shrinking"
             : light < mapMgr.threshhold && dark > 0 && dark < 1.0f ? "Darkness is growing"
