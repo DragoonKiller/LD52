@@ -178,6 +178,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: ProductionTree
       objectReference: {fileID: 0}
+    - target: {fileID: 6631511750771273318, guid: cf4f916bc236b7442bfbab90b1cc3944, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6631511750771273318, guid: cf4f916bc236b7442bfbab90b1cc3944, type: 3}
+      propertyPath: m_Constraints
+      value: 126
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf4f916bc236b7442bfbab90b1cc3944, type: 3}
 --- !u!224 &195118844 stripped
