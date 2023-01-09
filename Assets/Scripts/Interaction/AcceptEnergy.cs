@@ -82,6 +82,11 @@ public class AcceptEnergy : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        if(other.TryGetComponent<CheckTree>(out CheckTree check))
+        {
+            return;
+        }
+
         if (other.transform.parent.TryGetComponent<Player>(out Player player))
         {
             player.ShowInteractionButton(this);
@@ -89,6 +94,10 @@ public class AcceptEnergy : MonoBehaviour
     }
     void OnTriggerExit(Collider other)
     {
+        if(other.TryGetComponent<CheckTree>(out CheckTree check))
+        {
+            return;
+        }
         if (other.transform.parent.TryGetComponent<Player>(out Player player))
         {
             player.HideInteractionButton(this);
