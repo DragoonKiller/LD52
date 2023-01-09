@@ -222,6 +222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 294c60c2d743b4a4184654122aea963f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HarvestedItem: -1
 --- !u!135 &7515427818054017713
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -581,7 +582,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LineRenderer: {fileID: 0}
-  ArrowPrefab: {fileID: 6485639518999531049, guid: f4108976801f2b248b33d7187bfd1b5c, type: 3}
+  HarvestBirdPrefab: {fileID: 7815421133678868223, guid: f4108976801f2b248b33d7187bfd1b5c, type: 3}
+  LightBirdPrefab: {fileID: 6948423501592398872, guid: 5cdf8965860ba3f4eacecbd00de953c2, type: 3}
   LauchPosition: {fileID: 8133490619859272303}
   IfCanShoot: 1
   shootForce: 50

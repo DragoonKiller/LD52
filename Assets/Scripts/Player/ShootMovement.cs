@@ -28,7 +28,9 @@ public class ShootMovement : MonoBehaviour
     [SerializeField]
     private LineRenderer LineRenderer;
     [SerializeField]
-    private Arrow ArrowPrefab;
+    private HarvestBird HarvestBirdPrefab;
+    [SerializeField]
+    private LightBird LightBirdPrefab;
 
 
     [SerializeField]
@@ -39,12 +41,12 @@ public class ShootMovement : MonoBehaviour
     private float shootForce = 50f;
 
     int groundLayerMask;
-    
+
     void Start()
     {
         groundLayerMask = LayerMask.GetMask("Ground");
     }
-    
+
     void Update()
     {
         if (!IfCanShoot)
@@ -60,9 +62,29 @@ public class ShootMovement : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                var arrow = Instantiate<Arrow>(ArrowPrefab);
-                arrow.transform.position = LauchPosition.position;
-                arrow.Lauch(shootDir, shootForce);
+                var itemPlane = ItemPlane.Instance;
+
+                IProjectile bird = null;
+
+                switch (itemPlane.FocusItem)
+                {
+                    case ItemType.HarvestBird:
+                        if (itemPlane.CostItem(itemPlane.FocusIndex, 1))
+                            bird = Instantiate<HarvestBird>(HarvestBirdPrefab, LauchPosition.position, Quaternion.identity);
+                        break;
+                    case ItemType.LightBird:
+                        if (itemPlane.CostItem(itemPlane.FocusIndex, 1))
+                            bird = Instantiate<LightBird>(LightBirdPrefab, LauchPosition.position, Quaternion.identity);
+                        break;
+                    default:
+                        bird = null;
+                        break;
+                }
+
+                if (bird != null)
+                {
+                    bird.Launch(shootDir, shootForce);
+                }
             }
         }
 

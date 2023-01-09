@@ -29,6 +29,14 @@ public class ItemView : MonoBehaviour
     }
     private int _Num;
 
+    public Sprite Icon
+    {
+        set
+        {
+            IconSprite.sprite = value;
+        }
+    }
+
     public void SetFocus(bool ifFocus)
     {
         FrameSprite.SetActive(ifFocus);

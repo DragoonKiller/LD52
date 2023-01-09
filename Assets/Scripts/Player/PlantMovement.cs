@@ -41,26 +41,31 @@ public class PlantMovement : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.Mouse1))
                 {
-                    if (SeedNum > 0)
+                    bool willPlant = true;
+                    if (SeedNum <= 0)
                     {
-                        SeedNum--;
-                    }
-                    else
-                    {
+                        willPlant = false;
                         // 警告Seed不足
                         return;
                     }
                     if (Physics.Raycast(MousePoint.Position, Vector3.up, 1f, layerMask))
                     {
                         // 警告已有树木
+                        willPlant = false;
+                        // 警告Seed不足
+                        return;
                     }
-                    if (Player.ChangeSunEnergy(-PlantCost))
+                    if (willPlant && Player.ChangeSunEnergy(-PlantCost))
                     {
+                        SeedNum --;
                         PlantTreeAt(MousePoint.Position);
                     }
                     else
                     {
                         // 警告EG不足
+                        willPlant = false;
+                        // 警告Seed不足
+                        return;
                     }
                 }
             }

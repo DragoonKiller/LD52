@@ -9,7 +9,20 @@ public class AcceptEnergy : MonoBehaviour
     [SerializeField]
     private Collider TriggerCollider;
 
+    [SerializeField]
+    private ProductionTree ProductionTree;
+
     public bool ifAcceptEnergy;
+
+    public enum AceeptType
+    {
+        None = 0,
+        CenterSunTree = 1 << 1,
+        ProductionTree = 1 << 2
+    }
+    
+    public AceeptType Type;
+
 
     private Player Player;
 

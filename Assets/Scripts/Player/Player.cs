@@ -37,6 +37,8 @@ public class Player : MonoBehaviour
         set
         {
             _Energy = value;
+            if (_Energy > Energy_Max)
+                _Energy = Energy_Max;
             OnEnergyChangeEvent?.Invoke(Energy, Energy_Max);
         }
         get
@@ -55,12 +57,17 @@ public class Player : MonoBehaviour
         set
         {
             _HealPoint = value;
-            OnHealPointChangeEvent?.Invoke(HealPoint, HealPoint_Max);
             if (_HealPoint <= 0)
             {
                 _HealPoint = 0;
-                Death();
             }
+            if (_HealPoint > HealPoint_Max)
+                _HealPoint = HealPoint_Max;
+
+            OnHealPointChangeEvent?.Invoke(HealPoint, HealPoint_Max);
+
+            if (_HealPoint <= 0)
+                Death();
         }
         get
         {

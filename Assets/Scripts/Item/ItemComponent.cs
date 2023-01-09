@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class ItemComponent : MonoBehaviour
@@ -8,6 +9,8 @@ public class ItemComponent : MonoBehaviour
 
     public float Speed;
     private Transform Target;
+
+    public int Num = 1;
 
 
     private bool ifChase = false;
@@ -32,7 +35,7 @@ public class ItemComponent : MonoBehaviour
 
             if (Timer >= AllTime)
             {
-                ItemPlane.Instance.AddItem(Itemtype, 1);
+                ItemPlane.Instance.AddItem(Itemtype, Num);
                 Destroy(gameObject);
             }
         }
@@ -50,9 +53,13 @@ public class ItemComponent : MonoBehaviour
     }
 }
 
+[Flags]
 public enum ItemType
 {
-    Seed,
-    NormalBird,
-    LightBird
+    None = 0,
+    Seed = 1 << 0,
+    HarvestBird = 1 << 1,
+    LightBird = 1 << 2,
+    EnergyFruit = 1 << 3,
+    LifeFruit = 1 << 4
 }

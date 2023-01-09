@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2855179937979401746}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.747, z: 0}
+  m_LocalPosition: {x: 0, y: 0.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 151eed48ac478644192846426398272d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 05e733ad4e2544d4c85b0607480f35b8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -151,11 +151,18 @@ MonoBehaviour:
   Sprite: {fileID: 4286627550270131552}
   GrowSprite: {fileID: 21300000, guid: 45733ee411bbae54b80ec7bf99cf7b95, type: 3}
   RipeSprite: {fileID: 21300000, guid: 151eed48ac478644192846426398272d, type: 3}
+  Light: {fileID: 7038575564506582734}
+  GorwPosition1: {x: 0, y: 1.7, z: 0}
+  GorwPosition2: {x: 0, y: 1.7, z: 0}
+  CreatedFruitPrefab: {fileID: 7710470986016076032, guid: eaf7abc59dcdd5040afd2ffc69ec0415, type: 3}
   GrowSpeed: 1
   GrowTime1: 10
   GrowTime2: 10
+  FruitTime: 10
   BasedSunSpreadEnerge: 30
   GrowState: 0
+  RandomMin: 0.5
+  RandomMax: 4
 --- !u!1 &7493932002026068823
 GameObject:
   m_ObjectHideFlags: 0
@@ -213,6 +220,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeProjectionLight
       objectReference: {fileID: 0}
+    - target: {fileID: 1797447726857775250, guid: ff2e195deb4688c43ae4106b168d2209, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1797447726857775251, guid: ff2e195deb4688c43ae4106b168d2209, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -259,6 +270,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff2e195deb4688c43ae4106b168d2209, type: 3}
+--- !u!1 &7038575564506582734 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1797447726857775250, guid: ff2e195deb4688c43ae4106b168d2209, type: 3}
+  m_PrefabInstance: {fileID: 8745948695894697564}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7038575564506582735 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1797447726857775251, guid: ff2e195deb4688c43ae4106b168d2209, type: 3}
