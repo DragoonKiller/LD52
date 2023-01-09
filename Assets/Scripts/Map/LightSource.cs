@@ -17,13 +17,13 @@ public class LightSource : MonoBehaviour
     
     void Start()
     {
-        MapManager.instance.SetLightSource(intensity, radius, coord);
+        MapManager.instance?.SetLightSource(intensity, radius, coord);
         isActivated = true;
     }
     
     void OnDestroy()
     {
         if(!isActivated) return;
-        MapManager.instance.SetLightSource(intensity, radius, coord, true);
+        MapManager.instance?.SetLightSource(intensity, radius, coord, true);
     }
 }

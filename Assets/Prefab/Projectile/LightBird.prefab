@@ -508,7 +508,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1797447726857775261, guid: ff2e195deb4688c43ae4106b168d2209, type: 3}
       propertyPath: m_PointLightOuterRadius
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff2e195deb4688c43ae4106b168d2209, type: 3}
@@ -521,7 +521,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1361732716766390431, guid: 129900b9764ad794b948ee1c05294159, type: 3}
       propertyPath: radius
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1361732716766390431, guid: 129900b9764ad794b948ee1c05294159, type: 3}
       propertyPath: intensity

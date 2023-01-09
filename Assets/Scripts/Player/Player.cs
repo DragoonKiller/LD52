@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using Prota;
 
 public class Player : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class Player : MonoBehaviour
     [SerializeField] public PlantMovement PlantMovement;
 
     public PlayerState PlayerState = PlayerState.Idle;
+
+    public float damagePerSecInDark = 1;
 
 
     private void Awake()
@@ -119,6 +122,14 @@ public class Player : MonoBehaviour
             GiveEnergy.Target = null;
             GiveEnergy.SetActive(false);
         }
+    }
+    
+    void Update()
+    {
+        var pos = this.transform.position;
+        var coord = new Vector2Int(pos.x.RoundToInt(), pos.z.RoundToInt());
+        var darkness = MapManager.instance.darknese[coord.x, coord.y];
+        OnBeHit(0, darkness * Time.deltaTime * damagePerSecInDark);
     }
 
 }

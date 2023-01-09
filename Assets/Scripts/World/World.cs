@@ -34,6 +34,11 @@ public class World : MonoBehaviour
     {
         Player.OnBeHit(0, DardDamage * Time.deltaTime);
         DarkEnergy += DarkGrowSpeed * Time.deltaTime;
+        
+        if(Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.F))
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Main", UnityEngine.SceneManagement.LoadSceneMode.Single);
+        }
     }
 
     [SerializeField]
