@@ -11,7 +11,9 @@ public class World : MonoBehaviour
     public Transform TreeParent;
     public Transform ItemParent;
     #endregion
-
+    
+    public bool gameStart;
+    
     public void Awake()
     {
         if (Instance == null)
@@ -20,6 +22,8 @@ public class World : MonoBehaviour
         }
         else
             Destroy(gameObject);
+            
+            
     }
 
     /// <summary>

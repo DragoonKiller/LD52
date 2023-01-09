@@ -21,7 +21,7 @@ public class Dialogue : MonoBehaviour
     
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.R))
+        if(MapManager.canUpdate && Input.GetKeyDown(KeyCode.R))
         {
             cur += 1;
             UpdateText();
