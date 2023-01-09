@@ -50,7 +50,10 @@ public class ItemComponent : MonoBehaviour
         Distance = Vector3.Distance(target.transform.position, transform.position);
         AllTime = Distance / Speed;
         ifChase = true;
+        OnHarvestedEvent?.Invoke(this);
     }
+
+    public event Action<ItemComponent> OnHarvestedEvent;
 }
 
 [Flags]

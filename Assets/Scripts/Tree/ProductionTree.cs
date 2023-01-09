@@ -9,7 +9,7 @@ public class ProductionTree : MonoBehaviour
 
     #region  生产
     [SerializeField]
-    private ItemComponent CreatedBirdPrefab;
+    private ItemComponent CreatedItemPrefab;
     private float ProductionValue = 0;
     [SerializeField]
     private float ProductionValue_Max = 100f;
@@ -18,11 +18,9 @@ public class ProductionTree : MonoBehaviour
     #endregion
     [SerializeField]
     private ProductionHUD ProductionHUD;
-    #region 进度条
 
-
-
-    #endregion
+    public List<CreatFruitPoint> OpenCreatPositions = new List<CreatFruitPoint>();
+    List<CreatFruitPoint> CloseCreatPositions = new List<CreatFruitPoint>();
 
     public float Energy
     {
@@ -57,18 +55,22 @@ public class ProductionTree : MonoBehaviour
         ProductionHUD.ChangeEnergyValueView(_Energy, Energy_Max);
         ProductionHUD.ChangeProductionNum(ProductionNum);
         ProductionHUD.ChangeProducitonValueView(ProductionValue, ProductionValue_Max);
+        foreach (var position in OpenCreatPositions)
+        {
+            position.Init(this);
+        }
     }
 
     void Update()
     {
-        if (ProductionNum > 0)
+        if (ProductionNum > 0 && OpenCreatPositions.Count > 0)
         {
             ProductionValue += Time.deltaTime * ProducitionSpeed;
             if (ProductionValue > ProductionValue_Max)
             {
                 ProductionValue -= ProductionValue_Max;
                 ProductionNum--;
-                Instantiate(CreatedBirdPrefab, GetRandomPosition(), Quaternion.identity);
+                CreatFruit();
 
                 if (ProductionNum <= 0)
                     ProductionValue = 0;
@@ -76,6 +78,24 @@ public class ProductionTree : MonoBehaviour
             }
             ProductionHUD.ChangeProducitonValueView(ProductionValue, ProductionValue_Max);
         }
+    }
+
+    private void CreatFruit()
+    {
+        if (OpenCreatPositions.Count <= 0)
+            return;
+        int index = Random.Range(0, OpenCreatPositions.Count);
+        var position = OpenCreatPositions[index];
+        var fruit = Instantiate(CreatedItemPrefab, position.transform.position, Quaternion.identity);
+        position.SetFruit(fruit);
+        OpenCreatPositions.Remove(position);
+        CloseCreatPositions.Add(position);
+    }
+
+    public void CloseFruit(CreatFruitPoint point)
+    {
+        CloseCreatPositions.Remove(point);
+        OpenCreatPositions.Add(point);
     }
 
     [SerializeField]
