@@ -13,7 +13,7 @@ public class Title : MonoBehaviour
     public Image backImage;
     public TextMeshProUGUI hintText;
     
-    public static bool isFirstTime;
+    public static bool isFirstTime = true;
     
     public List<TextMeshProUGUI> text = new List<TextMeshProUGUI>();
     
@@ -23,19 +23,25 @@ public class Title : MonoBehaviour
     
     void Awake()
     {
-        isFirstTime = true;
         cg = this.GetComponent<CanvasGroup>();
     }
     
     void Start()
     {
-        if(!isFirstTime) return;
+        $"first {isFirstTime}".LogError();
+        
+        if(!isFirstTime)
+        {
+            this.gameObject.SetActive(false);
+            return;
+        }
         isFirstTime = false;
-        cc = null;
         
         titleImage.color = titleImage.color.WithA(0);
         hintText.color = hintText.color.WithA(0);
         foreach(var t in text) t.color = t.color.WithA(0);
+        cc = null;
+        
         titleImage.TweenColorA(1, 0.5f);
         Timer.New(3, this.gameObject.LifeSpan(), () => {
             cc = Process();
