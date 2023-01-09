@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using Prota;
+using Prota.Unity;
 using UnityEngine;
 
 public class ShootMovement : MonoBehaviour
 {
     private Camera Camera;
     private Player Player;
-
+    
+    public ParticleSystem launchParticle;
+    
     private float SunEnergy
     {
         set
@@ -33,13 +36,14 @@ public class ShootMovement : MonoBehaviour
     [SerializeField]
     private LightBird LightBirdPrefab;
 
-
     [SerializeField]
     private Transform LauchPosition;
     public bool IfCanShoot = true;
 
+    public float recoil = 3f;
+
     [SerializeField]
-    private float speed = 50f;
+    private float projectileSpeed = 15f;
 
     int groundLayerMask;
 
@@ -86,7 +90,13 @@ public class ShootMovement : MonoBehaviour
                 {
                     var from = new Vector2(LauchPosition.position.x, LauchPosition.position.z);
                     var to = new Vector2(hitPoint.x, hitPoint.z);
-                    bird.Launch(from, to, speed);
+                    bird.Launch(from, to, projectileSpeed);
+                    
+                    var dir = -from.To(to).normalized;
+                    World.Instance.Player.MoveComponent.pulsar = dir * recoil;
+                    
+                    launchParticle.transform.rotation = Quaternion.Euler(0, Vector2.SignedAngle(-dir, Vector2.up), 0);
+                    launchParticle.Emit(30);
                 }
             }
         }

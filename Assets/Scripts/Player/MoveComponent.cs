@@ -21,6 +21,11 @@ public class MoveComponent : MonoBehaviour
     
     public Vector2 recordDir = Vector2Int.zero;
     
+    public GameObject playerRunningParticle;
+    
+    public Vector2 pulsar;
+    public float pulsarReduce = 3f;
+    
     public SimpleAnimationAsset runRight;
     public SimpleAnimationAsset runDown;
     public SimpleAnimationAsset runUp;
@@ -32,6 +37,7 @@ public class MoveComponent : MonoBehaviour
     {
         if (Rigidbody == null) Rigidbody = GetComponent<Rigidbody>();
         anim = this.GetComponentInChildren<SimpleAnimation>();
+        playerRunningParticle = playerRunningParticle ?? transform.Find("PlayerRunningParticle").gameObject;
     }
 
     public void Init(Player player)
@@ -45,6 +51,7 @@ public class MoveComponent : MonoBehaviour
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
         ProcessAnimation(x, y);
+        ProcessFX(x, y);
         if (!IfCanMove) return;
         ProcessMove(x, y);
         if(x != 0 || y != 0)
@@ -67,7 +74,14 @@ public class MoveComponent : MonoBehaviour
     void ProcessMove(float x, float y)
     {
         var dir = new Vector3(x, 0, y).normalized;
-        Rigidbody.velocity = dir * Speed;
+        pulsar = pulsar.normalized * (pulsar.magnitude - Time.deltaTime * pulsarReduce);
+        var pulsarWeight = (pulsar.magnitude / 5f).Clamp(0, 1);
+        Rigidbody.velocity = dir * Speed * (1 - pulsarWeight) + new Vector3(pulsar.x, 0, pulsar.y) * pulsarWeight;
+    }
+    
+    void ProcessFX(float x, float y)
+    {
+        playerRunningParticle?.SetActive(x != 0 || y != 0);
     }
     
     void ProcessAnimation(float x, float y)
