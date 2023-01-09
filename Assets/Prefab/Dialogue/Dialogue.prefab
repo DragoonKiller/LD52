@@ -316,7 +316,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: to next dialogue
+  m_text: to next
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -826,26 +826,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogues:
-  - 'This is the dialogue of gold crow.
-
-    This is the second line of dialogue.
-
-    This
-    is the third.
-
-    Don''t exceed forth line.'
-  - 'Ahhhhhh
-
-    Where''s xp
-
-    Where''s xp
-
-    Where''s xp
-
-'
-  - '????
-
-    end of the world'
+  - 1. Use [W][A][S][D] to move
+  - 2. To win the game, you need to fully charge the main solar tree
+  - 3. Approach a tree then press [E] to deliver energy to it
+  - 4. You need to plant smaller solar trees to produce energy, with seeds
+  - 5. Get closer, or use [LMB] cast a white crow (if you have one) to collect solar
+    energy
+  - 6. You'll get hurt in cursed area, be careful.
+  - 7. gold crow can collect resources on its path
   dialogueObject: {fileID: 7651484046312465436}
   text: {fileID: 1942622742322022699}
 --- !u!1 &8317802435547827547
