@@ -525,11 +525,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7352910576834285494, guid: 37f1dcdebe2ade642a2ea7a4f75d061b, type: 3}
   m_PrefabInstance: {fileID: 785734241}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &846817359 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7651484046312465436, guid: eac3eda1eccf15d4db161c63ddb113fd, type: 3}
-  m_PrefabInstance: {fileID: 1317633230551873709}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &970595703
 GameObject:
   m_ObjectHideFlags: 0
@@ -1189,17 +1184,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2083971807 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1942622742322022699, guid: eac3eda1eccf15d4db161c63ddb113fd, type: 3}
-  m_PrefabInstance: {fileID: 1317633230551873709}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1317633230551873709
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1207,10 +1191,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8012139997878100921}
     m_Modifications:
-    - target: {fileID: 6992644390717971369, guid: eac3eda1eccf15d4db161c63ddb113fd, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7382314550222541358, guid: eac3eda1eccf15d4db161c63ddb113fd, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -1266,41 +1246,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7382314550222541358, guid: eac3eda1eccf15d4db161c63ddb113fd, type: 3}
   m_PrefabInstance: {fileID: 1317633230551873709}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1317633230551873711
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 846817359}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de3912dd52035ca41a38732a3ab44c1e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogues:
-  - 'This is the dialogue of gold crow.
-
-    This is the second line of dialogue.
-
-    This
-    is the third.
-
-    Don''t exceed forth line.'
-  - 'Ahhhhhh
-
-    Where''s xp
-
-    Where''s xp
-
-    Where''s xp
-
-'
-  - '????
-
-    end of the world'
-  dialogueObject: {fileID: 846817359}
-  text: {fileID: 2083971807}
 --- !u!1001 &1361513921279757186
 PrefabInstance:
   m_ObjectHideFlags: 0
