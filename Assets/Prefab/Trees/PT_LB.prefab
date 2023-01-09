@@ -867,7 +867,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Sprite: {fileID: 3632445505462006305}
   CreatedItemPrefab: {fileID: 8794579380829613174, guid: d072ba6827dd88647a36c96b7bb84ccf, type: 3}
-  ProductionValue_Max: 10
+  ProductionValue_Max: 6
   ProducitionSpeed: 1
   ProductionHUD: {fileID: 8176838438777020834}
   OpenCreatPositions:

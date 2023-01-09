@@ -84,6 +84,7 @@ public class World : MonoBehaviour
         set
         {
             _SunLevel = value;
+            Tips.Instance.ActiveTip(4);
             OnSunLevelChangeEvent?.Invoke(_SunLevel);
         }
         get

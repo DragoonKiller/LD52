@@ -104,19 +104,24 @@ public class ItemPlane : MonoBehaviour
         switch (item)
         {
             case ItemType.Seed:
+                Tips.Instance.ActiveTip(1);
                 SeedNum++;
                 return;
             case ItemType.EnergyFruit:
+                Tips.Instance.ActiveTip(2);
                 World.Instance.Player.ChangeSunEnergy(num);
                 return;
             case ItemType.LifeFruit:
+                Tips.Instance.ActiveTip(3);
                 World.Instance.Player.HealPoint += num;
                 return;
 
             case ItemType.HarvestBird:
+                Tips.Instance.ActiveTip(7);
                 icon = HarvestBirdIcon;
                 break;
             case ItemType.LightBird:
+                Tips.Instance.ActiveTip(0);
                 icon = LightBirdIcon;
                 break;
 

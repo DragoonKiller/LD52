@@ -82,6 +82,7 @@ public class ProductionTree : MonoBehaviour, IProduction
 
     private void CreatFruit()
     {
+        Tips.Instance.ActiveTip(5);
         if (OpenCreatPositions.Count <= 0)
             return;
         int index = Random.Range(0, OpenCreatPositions.Count);
