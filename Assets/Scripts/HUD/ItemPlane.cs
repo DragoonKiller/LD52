@@ -23,7 +23,9 @@ public class ItemPlane : MonoBehaviour
 
     void Update()
     {
+
         float mouseScrollWheel = Input.GetAxisRaw("Mouse ScrollWheel");
+
         if (ItemViews.Count <= 0)
             return;
         if (mouseScrollWheel > 0)
@@ -39,6 +41,15 @@ public class ItemPlane : MonoBehaviour
             if (nextIndex < 0)
                 nextIndex = ItemViews.Count - 1;
             FocusAtItem(nextIndex);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            FocusAtItem(0);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            FocusAtItem(1);
         }
     }
 
@@ -142,10 +153,10 @@ public class ItemPlane : MonoBehaviour
                 ItemViews.Remove(itemView);
                 CloseItemViews.Add(itemView);
                 FocusIndex--;
-                if(FocusIndex <=0)
+                if (FocusIndex <= 0)
                     FocusIndex = 0;
                 FocusAtItem(FocusIndex);
-                
+
             }
             return true;
         }
@@ -154,15 +165,15 @@ public class ItemPlane : MonoBehaviour
     public void FocusAtItem(int index)
     {
         Debug.Log(index + "  " + FocusIndex);
+        if (index >= ItemViews.Count || index < 0)
+            return;
         if (FocusIndex < ItemViews.Count)
         {
             ItemViews[FocusIndex].SetFocus(false);
         }
-        if (index < ItemViews.Count)
-        {
-            FocusIndex = index;
-            ItemViews[index].SetFocus(true);
-        }
+
+        FocusIndex = index;
+        ItemViews[index].SetFocus(true);
     }
 
 

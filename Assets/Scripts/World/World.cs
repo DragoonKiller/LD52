@@ -8,6 +8,8 @@ public class World : MonoBehaviour
     #region 链接
     public static World Instance;
     public Player Player;
+    public Transform TreeParent;
+    public Transform ItemParent;
     #endregion
 
     public void Awake()
@@ -28,14 +30,16 @@ public class World : MonoBehaviour
         SunEnergy = 0;
         SunSpreadEnerge = 0;
         DarkEnergy = 0;
+        InitSunUIFrameEvent?.Invoke(EnergyPreSunLevel, SunEnergy_Max);
+        InitDarkUIFrameEvent?.Invoke(EnergyPreDarkLevel, DarkEnergy_Max);
     }
 
     public void Update()
     {
         Player.OnBeHit(0, DardDamage * Time.deltaTime);
         DarkEnergy += DarkGrowSpeed * Time.deltaTime;
-        
-        if(Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.F))
+
+        if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.F))
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene("Main", UnityEngine.SceneManagement.LoadSceneMode.Single);
         }
@@ -48,7 +52,13 @@ public class World : MonoBehaviour
         set
         {
             _SunEnergy = value;
-            OnSunEnergyChange?.Invoke(SunEnergy, SunEnergy_Max);
+            OnSunEnergyChangeEvent?.Invoke(SunEnergy, SunEnergy_Max);
+
+            int curLevel = (int)(_SunEnergy / EnergyPreSunLevel);
+            if (SunLevel != curLevel)
+            {
+                SunLevel = curLevel;
+            }
         }
         get
         {
@@ -57,17 +67,25 @@ public class World : MonoBehaviour
     }
     private float _SunEnergy;
 
-    public event Action<float, float> OnSunEnergyChange;
+    public event Action<float, float> OnSunEnergyChangeEvent;
 
     public int SunLevel
     {
+        set
+        {
+            _SunLevel = value;
+            OnSunLevelChangeEvent?.Invoke(_SunLevel);
+        }
         get
         {
-            return (int)(_SunEnergy / EnergyPreSunLevel);
+            return _SunLevel;
         }
     }
+    private int _SunLevel = 0;
     [SerializeField]
     private float EnergyPreSunLevel = 200f;
+
+    public event Action<int> OnSunLevelChangeEvent;
 
     public float SunSpreadEnerge
     {
@@ -78,11 +96,11 @@ public class World : MonoBehaviour
         set
         {
             _SunSpreadEnerge = value;
-            if(_SunSpreadEnerge > SunEnergy)
+            if (_SunSpreadEnerge > SunEnergy)
             {
                 _SunSpreadEnerge = SunEnergy;
             }
-            OnSunSpreadEnergeChange?.Invoke(_SunSpreadEnerge,SunEnergy_Max);
+            OnSunSpreadEnergeChange?.Invoke(_SunSpreadEnerge, SunEnergy_Max);
         }
     }
     private float _SunSpreadEnerge;
@@ -95,23 +113,41 @@ public class World : MonoBehaviour
         set
         {
             _DarkEnergy = value;
-            OnDarkEnergyChange?.Invoke(DarkEnergy, DarkEnergy_Max);
+            OnDarkEnergyChangeEvent?.Invoke(DarkEnergy, DarkEnergy_Max);
+
+            int curLevel = (int)(_DarkEnergy / EnergyPreDarkLevel);
+            if (curLevel != DarkLevel)
+            {
+                DarkLevel = curLevel;
+            }
         }
         get
         {
             return _DarkEnergy;
         }
     }
+    private float _DarkEnergy;
 
-    public event Action<float, float> OnDarkEnergyChange;
+
+    public event Action<float, float> OnDarkEnergyChangeEvent;
     public int DarkLevel
     {
         get
         {
             return (int)(_DarkEnergy / EnergyPreDarkLevel);
         }
+        set
+        {
+            _DarkLevel = value;
+            OnDarkLevelChangeEvent?.Invoke(_DarkLevel);
+        }
     }
-    private float _DarkEnergy;
+    private int _DarkLevel;
+
+    public event Action<int> OnDarkLevelChangeEvent;
+
+    public event Action<float, float> InitDarkUIFrameEvent;
+    public event Action<float, float> InitSunUIFrameEvent;
 
     [SerializeField]
     private float DarkGrowSpeed;
@@ -133,4 +169,6 @@ public class World : MonoBehaviour
             return damge;
         }
     }
+
+
 }

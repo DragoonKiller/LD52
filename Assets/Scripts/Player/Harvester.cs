@@ -10,8 +10,8 @@ public class Harvester : MonoBehaviour
     {
         if(other.transform.parent.TryGetComponent<ItemComponent>(out ItemComponent itme))
         {
-            if(HarvestedItem.HasFlag(itme.Itemtype));
-            itme.Harvested(transform);
+            if(HarvestedItem.HasFlag(itme.Itemtype))
+                itme.Harvested(transform);
         }
     }
 }

@@ -45,9 +45,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
-  SunEnergy_Max: 300
+  TreeParent: {fileID: 0}
+  ItemParent: {fileID: 0}
+  SunEnergy_Max: 800
   EnergyPreSunLevel: 100
-  DarkEnergy_Max: 100
+  DarkEnergy_Max: 800
   DarkGrowSpeed: 0.3
   EnergyPreDarkLevel: 100
   BasedDarkDamage: 0.5
