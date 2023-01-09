@@ -20,7 +20,7 @@ public class AcceptEnergy : MonoBehaviour
         CenterSunTree = 1 << 1,
         ProductionTree = 1 << 2
     }
-    
+
     public AceeptType Type;
 
 
@@ -32,7 +32,15 @@ public class AcceptEnergy : MonoBehaviour
         {
             if (Player.Energy >= 0)
             {
-                World.Instance.SunEnergy += GetEnergySpeed * Time.deltaTime;
+                switch (Type)
+                {
+                    case AceeptType.CenterSunTree:
+                        World.Instance.SunEnergy += GetEnergySpeed * Time.deltaTime;
+                        break;
+                    case AceeptType.ProductionTree:
+                        ProductionTree.Energy += GetEnergySpeed * Time.deltaTime;
+                        break;
+                }
                 Player.Energy -= GetEnergySpeed * Time.deltaTime;
             }
             else
