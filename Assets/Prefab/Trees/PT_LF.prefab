@@ -52,7 +52,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d91413c1f11e3b34eb0f85b60b090008, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -298,7 +298,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3117971158150546443
 RectTransform:
   m_ObjectHideFlags: 0
@@ -881,6 +881,7 @@ MonoBehaviour:
   State: 0
   RandomMin: 0
   RandomMax: 4
+  HUD: {fileID: 3513479551883842105}
 --- !u!1 &6884161623138958814
 GameObject:
   m_ObjectHideFlags: 0

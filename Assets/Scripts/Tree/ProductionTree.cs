@@ -111,6 +111,12 @@ public class ProductionTree : MonoBehaviour, IProduction
         pos = new Vector3(pos.x, 0, pos.z);
         return pos;
     }
+    [SerializeField]
+    private GameObject HUD;
+    public void SetHUDActive(bool ifActive)
+    {
+        HUD.SetActive(ifActive);
+    }
 }
 
 public enum ProductionTreeState

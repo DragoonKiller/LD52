@@ -11,9 +11,9 @@ public class World : MonoBehaviour
     public Transform TreeParent;
     public Transform ItemParent;
     #endregion
-    
+
     public bool gameStart;
-    
+
     public void Awake()
     {
         if (Instance == null)
@@ -22,8 +22,8 @@ public class World : MonoBehaviour
         }
         else
             Destroy(gameObject);
-            
-            
+
+
     }
 
     /// <summary>
@@ -40,6 +40,8 @@ public class World : MonoBehaviour
 
     public void Update()
     {
+        if (!MapManager.canUpdate)
+            return;
         Player.OnBeHit(0, DarkDamage * Time.deltaTime);
         DarkEnergy += DarkGrowSpeed * Time.deltaTime;
         DarkGrowSpeed += DarkAddSpeed * Time.deltaTime;
@@ -153,7 +155,7 @@ public class World : MonoBehaviour
     {
         get
         {
-           return _DarkLevel;
+            return _DarkLevel;
         }
         set
         {

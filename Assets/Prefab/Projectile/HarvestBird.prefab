@@ -194,7 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 294c60c2d743b4a4184654122aea963f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HarvestedItem: 25
+  HarvestedItem: -1
   IfHasBouns: 1
   BasedBouns: 2
   AddBouns: 2

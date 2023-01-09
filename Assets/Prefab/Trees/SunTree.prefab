@@ -230,7 +230,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Sprite: {fileID: 4286627550270131552}
   GrowSprite: {fileID: 21300000, guid: 45733ee411bbae54b80ec7bf99cf7b95, type: 3}
-  RipeSprite: {fileID: 21300000, guid: 151eed48ac478644192846426398272d, type: 3}
+  RipeSprite: {fileID: 21300000, guid: d1fd6f19832c9d04b8d78bfc96092c2f, type: 3}
   Light: {fileID: 7038575564506582734}
   GorwPosition1: {x: 0, y: 1.7, z: 0}
   GorwPosition2: {x: 0, y: 1.7, z: 0}

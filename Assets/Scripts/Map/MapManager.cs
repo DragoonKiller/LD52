@@ -24,7 +24,7 @@ public class MapManager : Singleton<MapManager>
         lightvalue = new float[size.x, size.y];
         
         for(int i = 0; i < size.x; i++) for(int j = 0; j < size.y; j++)
-             darknese[i, j] = (new Vector2(i, j).To(size / 2).magnitude > 20 ? 1 : 0);
+             darknese[i, j] = (new Vector2(i, j).To(size / 2).magnitude > 7 ? 1 : 0);
     }
     
     public void UpdateDarknese()

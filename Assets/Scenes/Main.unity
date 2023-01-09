@@ -314,11 +314,15 @@ PrefabInstance:
       objectReference: {fileID: 1884032678}
     - target: {fileID: 1991527990641648317, guid: 5f061297ed7e04248bc1387658bb520c, type: 3}
       propertyPath: DarkAddSpeed
-      value: 0.01
+      value: 0.006
       objectReference: {fileID: 0}
     - target: {fileID: 1991527990641648317, guid: 5f061297ed7e04248bc1387658bb520c, type: 3}
       propertyPath: DarkGrowSpeed
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1991527990641648317, guid: 5f061297ed7e04248bc1387658bb520c, type: 3}
+      propertyPath: AdditionalDarkDamage
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1991527990641648318, guid: 5f061297ed7e04248bc1387658bb520c, type: 3}
       propertyPath: m_RootOrder
@@ -918,6 +922,14 @@ PrefabInstance:
     - target: {fileID: 2668224106434552463, guid: 3a5adbfc177ae43448c0c1b44c70c00a, type: 3}
       propertyPath: m_Name
       value: CenterSunTree
+      objectReference: {fileID: 0}
+    - target: {fileID: 3931164866561314589, guid: 3a5adbfc177ae43448c0c1b44c70c00a, type: 3}
+      propertyPath: m_PointLightInnerRadius
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3931164866561314589, guid: 3a5adbfc177ae43448c0c1b44c70c00a, type: 3}
+      propertyPath: m_PointLightOuterRadius
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8732001069287020320, guid: 3a5adbfc177ae43448c0c1b44c70c00a, type: 3}
       propertyPath: radius
