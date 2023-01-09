@@ -21,7 +21,7 @@ public class MoveComponent : MonoBehaviour
     
     public Vector2 recordDir = Vector2Int.zero;
     
-    public GameObject playerRunningParticle;
+    public ParticleSystem playerRunningParticle;
     
     public Vector2 pulsar;
     public float pulsarReduce = 3f;
@@ -37,7 +37,6 @@ public class MoveComponent : MonoBehaviour
     {
         if (Rigidbody == null) Rigidbody = GetComponent<Rigidbody>();
         anim = this.GetComponentInChildren<SimpleAnimation>();
-        playerRunningParticle = playerRunningParticle ?? transform.Find("PlayerRunningParticle").gameObject;
     }
 
     public void Init(Player player)
@@ -81,7 +80,8 @@ public class MoveComponent : MonoBehaviour
     
     void ProcessFX(float x, float y)
     {
-        playerRunningParticle?.SetActive(x != 0 || y != 0);
+        if(x == 0 && y == 0) return;
+        if(UnityEngine.Random.Range(0f, 1f) > 0.5f) playerRunningParticle?.Emit(1);
     }
     
     void ProcessAnimation(float x, float y)

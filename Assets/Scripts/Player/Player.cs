@@ -129,7 +129,7 @@ public class Player : MonoBehaviour
         var pos = this.transform.position;
         var coord = new Vector2Int(pos.x.RoundToInt(), pos.z.RoundToInt());
         var darkness = MapManager.instance.darknese[coord.x, coord.y];
-        OnBeHit(0, darkness * Time.deltaTime * damagePerSecInDark);
+        OnBeHit(0, (darkness >= 1 ? 1 : 0) * Time.deltaTime * damagePerSecInDark);
     }
 
 }
