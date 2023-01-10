@@ -83,6 +83,7 @@ public class MapManager : Singleton<MapManager>
     
     private void Update()
     {
+        $"{ canUpdate }".Log();
         if(canUpdate) UpdateDarknese();
         
         if (Input.GetMouseButtonDown(0))

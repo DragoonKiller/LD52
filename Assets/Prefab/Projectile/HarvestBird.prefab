@@ -64,7 +64,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Rigidbody: {fileID: 6546707024116381996}
-  LifeTime: 3
+  LifeTime: 2
 --- !u!1 &4879576762077140874
 GameObject:
   m_ObjectHideFlags: 0
