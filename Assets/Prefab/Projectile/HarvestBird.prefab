@@ -196,8 +196,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HarvestedItem: -1
   IfHasBouns: 1
-  BasedBouns: 2
-  AddBouns: 2
+  BasedBouns: 3
+  AddBouns: 1
 --- !u!136 &3942555929277996583
 CapsuleCollider:
   m_ObjectHideFlags: 0

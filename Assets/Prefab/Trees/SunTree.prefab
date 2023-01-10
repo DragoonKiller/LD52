@@ -239,9 +239,9 @@ MonoBehaviour:
   GrowSpeed: 1
   GrowTime1: 10
   GrowTime2: 10
-  FruitTime: 15
+  FruitTime: 20
   BasedSunSpreadEnerge: 30
-  BasedSunAddSpeed: 0.2
+  BasedSunAddSpeed: 0.07
   GrowState: 0
   RandomMin: 0.5
   RandomMax: 4

@@ -52,13 +52,21 @@ public class ProductionTree : MonoBehaviour, IProduction
     void Start()
     {
         State = ProductionTreeState.Sleep;
-        ProductionHUD.ChangeEnergyValueView(_Energy, Energy_Max);
-        ProductionHUD.ChangeProductionNum(ProductionNum);
-        ProductionHUD.ChangeProducitonValueView(ProductionValue, ProductionValue_Max);
+        Invoke("LateStart",0.1f);
         foreach (var position in OpenCreatPositions)
         {
             position.Init(this);
         }
+    }
+
+    void LateStart()
+    {
+        _Energy = 0;
+        ProductionNum = 0;
+        ProductionValue = 0;
+        ProductionHUD.ChangeEnergyValueView(_Energy, Energy_Max);
+        ProductionHUD.ChangeProductionNum(ProductionNum);
+        ProductionHUD.ChangeProducitonValueView(ProductionValue, ProductionValue_Max);
     }
 
     void Update()

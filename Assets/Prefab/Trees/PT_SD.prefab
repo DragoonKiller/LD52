@@ -603,7 +603,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3151d6e8dcfc87343837812641e3bca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GetEnergySpeed: 10
+  GetEnergySpeed: 20
   TriggerCollider: {fileID: 7404907987644509398}
   ProductionTree: {fileID: 622908795433305621}
   ifAcceptEnergy: 0
@@ -867,7 +867,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Sprite: {fileID: 3632445505462006305}
   CreatedItemPrefab: {fileID: 6704121876719961416, guid: ba0e7fc2d719f5a4dbedd72297e3c00b, type: 3}
-  ProductionValue_Max: 20
+  ProductionValue_Max: 10
   ProducitionSpeed: 1
   ProductionHUD: {fileID: 8176838438777020834}
   OpenCreatPositions:
@@ -877,7 +877,7 @@ MonoBehaviour:
   - {fileID: 7182294510550170387}
   - {fileID: 7821626064876073475}
   - {fileID: 2045620902729084387}
-  Energy_Max: 30
+  Energy_Max: 40
   State: 0
   RandomMin: 0
   RandomMax: 4

@@ -21,8 +21,8 @@ public class Tips : MonoBehaviour
     {
         if (index >= TipList.Count || index < 0)
             return;
-        if(TipList[index].activeInHierarchy)
-            return;
+        /* if(TipList[index].activeInHierarchy)
+            return; */
         TipList[index].SetActive(true);
         TipList[index].transform.SetSiblingIndex(0);
     }

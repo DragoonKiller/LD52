@@ -31,11 +31,18 @@ public class World : MonoBehaviour
     /// </summary>
     void Start()
     {
-        SunEnergy = 0;
+        SunEnergy = 100f;
         SunSpreadEnerge = 0;
-        DarkEnergy = 100f;
+        DarkEnergy = 150f;
+
+        Invoke("LateStart", 0.1f);
+    }
+
+    private void LateStart()
+    {
         InitSunUIFrameEvent?.Invoke(EnergyPreSunLevel, SunEnergy_Max);
         InitDarkUIFrameEvent?.Invoke(EnergyPreDarkLevel, DarkEnergy_Max);
+        OnSunSpreadEnergeChange?.Invoke(_SunSpreadEnerge, SunEnergy_Max);
     }
 
     public void Update()
@@ -187,7 +194,9 @@ public class World : MonoBehaviour
         get
         {
             int levelValue = Mathf.Clamp(DarkLevel - SunLevel, 0, 10);
-            float damge = BasedDarkDamage + AdditionalDarkDamage * levelValue;
+            float damge = levelValue > 0 ? BasedDarkDamage : 0f;
+            if (levelValue >= 2)
+                damge += AdditionalDarkDamage * (levelValue - 1);
             return damge;
         }
     }

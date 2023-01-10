@@ -28,6 +28,7 @@ public class AcceptEnergy : MonoBehaviour
 
     void Update()
     {
+        getEnergyCount = 0;
         if (ifAcceptEnergy)
         {
             if (Player.Energy > 0)
@@ -52,17 +53,32 @@ public class AcceptEnergy : MonoBehaviour
         }
     }
 
+    private int getEnergyCount = 0;
+    private float reduceSpeed = 0.8f;
+
     public void GetEnergyUpdate(float speed)
     {
         switch (Type)
         {
             case AceeptType.CenterSunTree:
-                World.Instance.SunEnergy += speed * Time.deltaTime;
+                var curSp = speed;
+                for (int i = 0; i < getEnergyCount; i++)
+                {
+                    curSp *= reduceSpeed;
+                }
+
+                World.Instance.SunEnergy += curSp * Time.deltaTime;
                 break;
             case AceeptType.ProductionTree:
-                ProductionTree.Energy += speed * Time.deltaTime;
+                var curSp2 = speed;
+                for (int i = 0; i < getEnergyCount; i++)
+                {
+                    curSp2 *= reduceSpeed;
+                }
+                ProductionTree.Energy += curSp2 * Time.deltaTime;
                 break;
         }
+        getEnergyCount++;
     }
 
     public void StartAcceptEnergy(Player player)
@@ -82,7 +98,7 @@ public class AcceptEnergy : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.TryGetComponent<CheckTree>(out CheckTree check))
+        if (other.TryGetComponent<CheckTree>(out CheckTree check))
         {
             return;
         }
@@ -94,7 +110,7 @@ public class AcceptEnergy : MonoBehaviour
     }
     void OnTriggerExit(Collider other)
     {
-        if(other.TryGetComponent<CheckTree>(out CheckTree check))
+        if (other.TryGetComponent<CheckTree>(out CheckTree check))
         {
             return;
         }

@@ -877,7 +877,7 @@ MonoBehaviour:
   - {fileID: 7182294510550170387}
   - {fileID: 7821626064876073475}
   - {fileID: 2045620902729084387}
-  Energy_Max: 10
+  Energy_Max: 5
   State: 0
   RandomMin: 0
   RandomMax: 4

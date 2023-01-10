@@ -248,11 +248,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02736c9b3f8b54e4c83f0baf6afe4680, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LifeTime: 25
+  LifeTime: 30
   lightSource: {fileID: 5620125482466757213}
   decos: {fileID: 5663869029257331832}
   Rigidbody: {fileID: 6338592947707144926}
-  EnergySpeed: 8
+  EnergySpeed: 1.5
 --- !u!1 &5663869029257331832
 GameObject:
   m_ObjectHideFlags: 0
